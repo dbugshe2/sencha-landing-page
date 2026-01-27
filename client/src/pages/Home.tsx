@@ -1,16 +1,16 @@
 import { Link } from "wouter";
 import { CreateLeadForm } from "@/components/CreateLeadForm";
 import { Button } from "@/components/ui/button";
-import { 
-  ShieldCheck, 
-  CreditCard, 
-  TrendingUp, 
-  Building2, 
-  LineChart, 
+import {
+  ShieldCheck,
+  CreditCard,
+  TrendingUp,
+  Building2,
+  LineChart,
   Smartphone,
   CheckCircle2,
   Menu,
-  X
+  X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -22,24 +22,51 @@ function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-border/40">
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">
-            C
-          </div>
-          <span className="text-xl font-display font-bold text-primary tracking-tight">CreditBuilder</span>
+          <img
+            src={"/svgs/sencha-logo.svg"}
+            alt="Sencha Credit Logo"
+            width={40}
+            height={40}
+          />
+          <span className="text-xl font-display font-bold text-primary tracking-tight">
+            Sencha Credit
+          </span>
         </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#solutions" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Solutions</a>
-          <a href="#how-it-works" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">How It Works</a>
-          <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contact</a>
-          <Button variant="default" size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-lg shadow-md shadow-primary/20">
+          <a
+            href="#solutions"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+          >
+            Solutions
+          </a>
+          <a
+            href="#how-it-works"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+          >
+            How It Works
+          </a>
+          <a
+            href="#contact"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+          >
+            Contact
+          </a>
+          <Button
+            variant="default"
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-white rounded-lg shadow-md shadow-primary/20"
+          >
             Client Login
           </Button>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden p-2 text-primary" onClick={() => setIsOpen(!isOpen)}>
+        <button
+          className="md:hidden p-2 text-primary"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -47,17 +74,37 @@ function Navbar() {
       {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden border-b border-border bg-white overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-4">
-              <a href="#solutions" className="text-sm font-medium" onClick={() => setIsOpen(false)}>Solutions</a>
-              <a href="#how-it-works" className="text-sm font-medium" onClick={() => setIsOpen(false)}>How It Works</a>
-              <a href="#contact" className="text-sm font-medium" onClick={() => setIsOpen(false)}>Contact</a>
-              <Button className="w-full bg-primary text-white">Client Login</Button>
+              <a
+                href="#solutions"
+                className="text-sm font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                Solutions
+              </a>
+              <a
+                href="#how-it-works"
+                className="text-sm font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                How It Works
+              </a>
+              <a
+                href="#contact"
+                className="text-sm font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </a>
+              <Button className="w-full bg-primary text-white">
+                Client Login
+              </Button>
             </div>
           </motion.div>
         )}
@@ -71,7 +118,7 @@ function Hero() {
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden mesh-gradient">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -81,22 +128,35 @@ function Hero() {
               Now available for Credit Unions
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary leading-[1.1] mb-6">
-              Empower Your Members with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">Credit-Building</span> Debit Cards
+              Empower Your Members with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
+                Credit-Building
+              </span>{" "}
+              Debit Cards
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
-              Turn everyday transactions into credit-building opportunities. A white-label solution designed specifically for forward-thinking Banks and Credit Unions.
+              Turn everyday transactions into credit-building opportunities. A
+              white-label solution designed specifically for forward-thinking
+              Banks and Credit Unions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="h-14 px-8 text-base rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25">
+              <Button
+                size="lg"
+                className="h-14 px-8 text-base rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+              >
                 Request a Demo
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 text-base rounded-xl border-primary/20 text-primary hover:bg-secondary/30">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 px-8 text-base rounded-xl border-primary/20 text-primary hover:bg-secondary/30"
+              >
                 Learn More
               </Button>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -105,20 +165,29 @@ function Hero() {
             <div className="relative z-10 bg-gradient-to-br from-primary to-[#0f2e1b] rounded-3xl p-8 shadow-2xl border border-white/10 aspect-[4/3] flex flex-col justify-between overflow-hidden group">
               {/* Abstract Card Visual */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              
+
               <div className="flex justify-between items-start">
-                <div className="text-white/80 font-mono text-sm tracking-widest">DEBIT</div>
+                <div className="text-white/80 font-mono text-sm tracking-widest">
+                  DEBIT
+                </div>
                 <CreditCard className="text-secondary w-8 h-8" />
               </div>
-              
+
               <div className="space-y-6 relative">
                 <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/5 transform transition-transform group-hover:translate-x-2 duration-500">
                   <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
                     <TrendingUp className="text-green-400 w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs text-white/60">Credit Score Impact</div>
-                    <div className="text-lg font-bold text-white">+45 pts <span className="text-xs font-normal text-white/60">/ 6 mo</span></div>
+                    <div className="text-xs text-white/60">
+                      Credit Score Impact
+                    </div>
+                    <div className="text-lg font-bold text-white">
+                      +45 pts{" "}
+                      <span className="text-xs font-normal text-white/60">
+                        / 6 mo
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -128,12 +197,17 @@ function Hero() {
                   </div>
                   <div>
                     <div className="text-xs text-white/60">Risk Exposure</div>
-                    <div className="text-lg font-bold text-white">0% <span className="text-xs font-normal text-white/60">Secured</span></div>
+                    <div className="text-lg font-bold text-white">
+                      0%{" "}
+                      <span className="text-xs font-normal text-white/60">
+                        Secured
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {/* Decorative background elements */}
             <div className="absolute -inset-4 bg-secondary/30 rounded-[2.5rem] -z-10 blur-xl opacity-60" />
           </motion.div>
@@ -148,31 +222,39 @@ function ValueProps() {
     {
       icon: <Smartphone className="w-6 h-6 text-primary" />,
       title: "Seamless Integration",
-      description: "Our API-first platform integrates directly with your existing core banking system without disruption."
+      description:
+        "Our API-first platform integrates directly with your existing core banking system without disruption.",
     },
     {
       icon: <ShieldCheck className="w-6 h-6 text-primary" />,
       title: "Compliance Ready",
-      description: "Fully regulated infrastructure that handles all KYC, AML, and credit reporting requirements automatically."
+      description:
+        "Fully regulated infrastructure that handles all KYC, AML, and credit reporting requirements automatically.",
     },
     {
       icon: <TrendingUp className="w-6 h-6 text-primary" />,
       title: "Member Wellness",
-      description: "Help your members build their credit score safely with zero debt risk, fostering long-term loyalty."
-    }
+      description:
+        "Help your members build their credit score safely with zero debt risk, fostering long-term loyalty.",
+    },
   ];
 
   return (
     <section id="solutions" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Why Leading Institutions Choose Us</h2>
-          <p className="text-lg text-muted-foreground">We handle the complexity of credit reporting so you can focus on your members.</p>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+            Why Leading Institutions Choose Us
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            We handle the complexity of credit reporting so you can focus on
+            your members.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -183,8 +265,12 @@ function ValueProps() {
               <div className="w-14 h-14 rounded-xl bg-white shadow-sm border border-border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-primary mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold text-primary mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -195,13 +281,20 @@ function ValueProps() {
 
 function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-primary text-white overflow-hidden relative">
+    <section
+      id="how-it-works"
+      className="py-24 bg-primary text-white overflow-hidden relative"
+    >
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none" />
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">How It Works</h2>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg">A simple process that delivers powerful results for your members.</p>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+            How It Works
+          </h2>
+          <p className="text-white/70 max-w-2xl mx-auto text-lg">
+            A simple process that delivers powerful results for your members.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12 relative">
@@ -209,11 +302,23 @@ function HowItWorks() {
           <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-white/10" />
 
           {[
-            { step: "01", title: "Spend", desc: "Members use their debit card for everyday purchases just like normal." },
-            { step: "02", title: "Report", desc: "We automatically report these payments to major credit bureaus." },
-            { step: "03", title: "Build", desc: "Members see their credit score improve over time, building financial health." }
+            {
+              step: "01",
+              title: "Spend",
+              desc: "Members use their debit card for everyday purchases just like normal.",
+            },
+            {
+              step: "02",
+              title: "Report",
+              desc: "We automatically report these payments to major credit bureaus.",
+            },
+            {
+              step: "03",
+              title: "Build",
+              desc: "Members see their credit score improve over time, building financial health.",
+            },
           ].map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -222,7 +327,9 @@ function HowItWorks() {
               className="relative text-center"
             >
               <div className="w-24 h-24 rounded-full bg-primary border-4 border-secondary/20 flex items-center justify-center mx-auto mb-8 relative z-10 shadow-xl">
-                <span className="text-3xl font-display font-bold text-secondary">{item.step}</span>
+                <span className="text-3xl font-display font-bold text-secondary">
+                  {item.step}
+                </span>
               </div>
               <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
               <p className="text-white/70 leading-relaxed px-4">{item.desc}</p>
@@ -239,7 +346,7 @@ function FeatureHighlight() {
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -258,19 +365,25 @@ function FeatureHighlight() {
               <div className="p-8 bg-muted/10">
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   <div className="bg-white p-6 rounded-xl shadow-sm border border-border/50">
-                    <div className="text-sm text-muted-foreground mb-2">Credit Score</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Credit Score
+                    </div>
                     <div className="text-4xl font-bold text-primary">720</div>
                     <div className="text-xs text-green-600 font-medium mt-2 flex items-center">
                       <TrendingUp className="w-3 h-3 mr-1" /> +12 pts this month
                     </div>
                   </div>
                   <div className="bg-white p-6 rounded-xl shadow-sm border border-border/50">
-                    <div className="text-sm text-muted-foreground mb-2">Reporting Status</div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      Reporting Status
+                    </div>
                     <div className="text-lg font-bold text-primary flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                       Active
                     </div>
-                    <div className="text-xs text-muted-foreground mt-2">Last update: Today</div>
+                    <div className="text-xs text-muted-foreground mt-2">
+                      Last update: Today
+                    </div>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -282,7 +395,7 @@ function FeatureHighlight() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -292,16 +405,22 @@ function FeatureHighlight() {
               Give your members transparency and control.
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our white-label dashboard gives your members real-time insights into their credit journey. They can track score improvements, view reported payments, and understand the factors impacting their financial health.
+              Our white-label dashboard gives your members real-time insights
+              into their credit journey. They can track score improvements, view
+              reported payments, and understand the factors impacting their
+              financial health.
             </p>
             <ul className="space-y-4">
               {[
                 "Real-time credit score tracking",
                 "Educational resources and tips",
                 "Transparent reporting history",
-                "Customizable alerts and notifications"
+                "Customizable alerts and notifications",
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-primary font-medium">
+                <li
+                  key={i}
+                  className="flex items-center gap-3 text-primary font-medium"
+                >
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
                   {item}
                 </li>
@@ -324,27 +443,37 @@ function LeadCapture() {
               Ready to launch your credit program?
             </h2>
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Join the growing network of financial institutions empowering their members with next-generation credit building tools.
+              Join the growing network of financial institutions empowering
+              their members with next-generation credit building tools.
             </p>
-            
+
             <div className="space-y-8">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
                   <Building2 className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary text-lg">Bank-Grade Security</h4>
-                  <p className="text-muted-foreground">SOC 2 Type II certified and fully compliant infrastructure.</p>
+                  <h4 className="font-bold text-primary text-lg">
+                    Bank-Grade Security
+                  </h4>
+                  <p className="text-muted-foreground">
+                    SOC 2 Type II certified and fully compliant infrastructure.
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
                   <LineChart className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary text-lg">Fast Implementation</h4>
-                  <p className="text-muted-foreground">Go live in weeks, not months, with our dedicated support team.</p>
+                  <h4 className="font-bold text-primary text-lg">
+                    Fast Implementation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Go live in weeks, not months, with our dedicated support
+                    team.
+                  </p>
                 </div>
               </div>
             </div>
@@ -366,37 +495,86 @@ function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-primary font-bold text-xl">
-                C
-              </div>
-              <span className="text-xl font-display font-bold tracking-tight">CreditBuilder</span>
+              <img
+                src={"/svgs/sencha-logo.svg"}
+                alt="Sencha Credit Logo"
+                width={32}
+                height={32}
+                className="brightness-0 invert"
+              />
+              <span className="text-xl font-display font-bold tracking-tight">
+                Sencha Credit
+              </span>
             </div>
             <p className="text-white/60 max-w-sm">
-              Empowering financial institutions with white-label credit building solutions for the modern era.
+              Empowering financial institutions with white-label credit building
+              solutions for the modern era.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-6">Company</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Press</a></li>
+              <li>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Press
+                </a>
+              </li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-6">Legal</h4>
             <ul className="space-y-4">
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-white/60 hover:text-white transition-colors">Security</a></li>
+              <li>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Security
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-white/10 text-center md:text-left text-white/40 text-sm">
-          © {new Date().getFullYear()} CreditBuilder Inc. All rights reserved.
+          © {new Date().getFullYear()} Sencha Credit Inc. All rights reserved.
         </div>
       </div>
     </footer>

@@ -79,6 +79,31 @@ npm run build
   - Creates a new lead capture entry.
   - **Input:** `{ name: string, email: string, message?: string }`
 
+## ☁️ Deployment (from Replit Export)
+
+This project was originally exported from Replit and requires specific configuration for deployment on Vercel.
+
+### Option 1: Vercel (Recommended)
+
+Vercel is ideal for this Vite + Express setup using **Serverless Functions**.
+
+1. **Build Settings:**
+   - **Framework Preset:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist/public`
+
+2. **Serverless Functions:**
+   - Vercel automatically detects the `server/` directory. However, because this is an Express app, you may need a `vercel.json` to route API requests to your bundled server script or use Vercel's Node.js runtime for the `api` folder.
+   - **Note:** For the current structure, ensure `dist/index.cjs` is accessible or adapt `server/index.ts` to Vercel's function signature if deploying as standalone functions.
+
+3. **Environment Variables:**
+   - `DATABASE_URL`: Your PostgreSQL connection string.
+   - `NODE_ENV`: `production`
+
+### Option 2: Replit
+
+Since it originates from Replit, you can simply import the repository back into a Replit Nix workspace and it will run using the provided `.replit` and `nix` configurations.
+
 ## 🔄 Migration Guide
 
 > [!IMPORTANT]
