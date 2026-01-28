@@ -16,6 +16,11 @@ import {
 import { Loader2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
+/**
+ * A form component for capturing lead information.
+ * Uses `react-hook-form` with Zod validation and `framer-motion` for animations.
+ * @returns The Lead capture form component.
+ */
 export function CreateLeadForm() {
   const { mutate, isPending } = useCreateLead();
 
@@ -36,16 +41,19 @@ export function CreateLeadForm() {
   }
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       className="bg-white rounded-2xl p-8 md:p-10 shadow-xl border border-border/50"
     >
       <div className="mb-8">
-        <h3 className="text-2xl font-bold text-primary mb-2">Get Started Today</h3>
+        <h3 className="text-2xl font-bold text-primary mb-2">
+          Get Started Today
+        </h3>
         <p className="text-muted-foreground">
-          Ready to launch your credit-building program? Fill out the form below and our team will get back to you within 24 hours.
+          Ready to launch your credit-building program? Fill out the form below
+          and our team will get back to you within 24 hours.
         </p>
       </div>
 
@@ -57,32 +65,36 @@ export function CreateLeadForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-foreground/80 font-medium">Full Name</FormLabel>
+                  <FormLabel className="text-foreground/80 font-medium">
+                    Full Name
+                  </FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="Jane Smith" 
-                      className="h-12 rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all" 
-                      {...field} 
-                      value={field.value || ''}
+                    <Input
+                      placeholder="Jane Smith"
+                      className="h-12 rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all"
+                      {...field}
+                      value={field.value || ""}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="companyName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-foreground/80 font-medium">Company / Institution</FormLabel>
+                  <FormLabel className="text-foreground/80 font-medium">
+                    Company / Institution
+                  </FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="First National Bank" 
-                      className="h-12 rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all" 
-                      {...field} 
-                      value={field.value || ''}
+                    <Input
+                      placeholder="First National Bank"
+                      className="h-12 rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all"
+                      {...field}
+                      value={field.value || ""}
                     />
                   </FormControl>
                   <FormMessage />
@@ -96,12 +108,14 @@ export function CreateLeadForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-foreground/80 font-medium">Work Email</FormLabel>
+                <FormLabel className="text-foreground/80 font-medium">
+                  Work Email
+                </FormLabel>
                 <FormControl>
-                  <Input 
-                    placeholder="jane@bank.com" 
-                    className="h-12 rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all" 
-                    {...field} 
+                  <Input
+                    placeholder="jane@bank.com"
+                    className="h-12 rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all"
+                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -114,13 +128,15 @@ export function CreateLeadForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-foreground/80 font-medium">How can we help?</FormLabel>
+                <FormLabel className="text-foreground/80 font-medium">
+                  How can we help?
+                </FormLabel>
                 <FormControl>
-                  <Textarea 
-                    placeholder="Tell us about your institution's goals..." 
-                    className="min-h-[120px] rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all resize-none" 
-                    {...field} 
-                    value={field.value || ''}
+                  <Textarea
+                    placeholder="Tell us about your institution's goals..."
+                    className="min-h-[120px] rounded-lg bg-muted/30 border-border/60 focus:bg-white transition-all resize-none"
+                    {...field}
+                    value={field.value || ""}
                   />
                 </FormControl>
                 <FormMessage />
@@ -128,8 +144,8 @@ export function CreateLeadForm() {
             )}
           />
 
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             disabled={isPending}
             className="w-full h-14 text-lg font-semibold rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
           >

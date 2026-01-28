@@ -22,6 +22,11 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 
+/**
+ * Formats and logs a message to the console with a timestamp and source tag.
+ * @param message - The message to log.
+ * @param source - The source of the log message (defaults to "express").
+ */
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
     hour: "numeric",

@@ -15,6 +15,11 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
+/**
+ * Navigation bar component with desktop and mobile layouts.
+ * Includes smooth scroll links and a mobile menu toggle.
+ * @returns The Navbar component.
+ */
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -113,6 +118,10 @@ function Navbar() {
   );
 }
 
+/**
+ * Hero section component featuring the main value proposition and a call-to-action link.
+ * @returns The Hero section component.
+ */
 function Hero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden mesh-gradient">
@@ -217,6 +226,10 @@ function Hero() {
   );
 }
 
+/**
+ * Section highlighting the key value propositions/features of the platform.
+ * @returns The ValueProps section component.
+ */
 function ValueProps() {
   const features = [
     {
@@ -279,6 +292,10 @@ function ValueProps() {
   );
 }
 
+/**
+ * Section explaining the step-by-step process of how the platform works.
+ * @returns The HowItWorks section component.
+ */
 function HowItWorks() {
   return (
     <section
@@ -341,6 +358,10 @@ function HowItWorks() {
   );
 }
 
+/**
+ * Section highlighting specific features with visual representations.
+ * @returns The FeatureHighlight section component.
+ */
 function FeatureHighlight() {
   return (
     <section className="py-24 bg-white overflow-hidden">
@@ -433,6 +454,10 @@ function FeatureHighlight() {
   );
 }
 
+/**
+ * Section containing the lead capture form for demonstrative purposes or inquiries.
+ * @returns The LeadCapture section component.
+ */
 function LeadCapture() {
   return (
     <section id="contact" className="py-24 bg-muted/30">
@@ -488,6 +513,10 @@ function LeadCapture() {
   );
 }
 
+/**
+ * Site footer component containing corporate information and categorized links.
+ * @returns The Footer component.
+ */
 function Footer() {
   return (
     <footer className="bg-primary text-white py-12 border-t border-white/10">
@@ -581,6 +610,11 @@ function Footer() {
   );
 }
 
+/**
+ * The main landing page component for the Sencha platform.
+ * Assembles all site sections: Hero, ValueProps, HowItWorks, FeatureHighlight, LeadCapture, and Footer.
+ * @returns The Home page component.
+ */
 export default function Home() {
   return (
     <div className="min-h-screen bg-background font-sans">

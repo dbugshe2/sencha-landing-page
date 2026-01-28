@@ -8,6 +8,12 @@ import { nanoid } from "nanoid";
 
 const viteLogger = createLogger();
 
+/**
+ * Sets up the Vite development server middleware for the Express application.
+ * Only used in development mode.
+ * @param server - The HTTP server instance.
+ * @param app - The Express application instance.
+ */
 export async function setupVite(server: Server, app: Express) {
   const serverOptions = {
     middlewareMode: true,
