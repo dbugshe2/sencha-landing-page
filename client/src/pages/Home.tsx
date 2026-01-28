@@ -28,14 +28,14 @@ function Navbar() {
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img
-            src={"/svgs/sencha-logo.svg"}
+            src={"/svgs/new-sencha.svg"}
             alt="Sencha Credit Logo"
-            width={40}
-            height={40}
+            width={"100%"}
+            height={64}
           />
-          <span className="text-xl font-display font-bold text-primary tracking-tight">
+          {/* <span className="text-xl font-display font-bold text-primary tracking-tight">
             Sencha Credit
-          </span>
+          </span> */}
         </div>
 
         {/* Desktop Nav */}
@@ -541,15 +541,15 @@ function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <img
-                src={"/svgs/sencha-logo.svg"}
+                src={"/svgs/sencha-logo-all-white.svg"}
                 alt="Sencha Credit Logo"
-                width={32}
+                width={"100%"}
                 height={32}
-                className="brightness-0 invert"
+                className="brightness-0 invert max-w-[200px]"
               />
-              <span className="text-xl font-display font-bold tracking-tight">
+              {/* <span className="text-xl font-display font-bold tracking-tight">
                 Sencha Credit
-              </span>
+              </span> */}
             </div>
             <p className="text-white/60 max-w-sm">
               Empowering financial institutions with white-label credit building
