@@ -6,3 +6,5 @@ vite.config.ts.*
 *.tar.gz
 .env
 .env*
+# Snyk Security Extension - AI Rules (auto-generated)
+.agent/rules/snyk_rules.md

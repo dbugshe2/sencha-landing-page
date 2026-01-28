@@ -171,46 +171,62 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative z-10 bg-gradient-to-br from-primary to-[#0f2e1b] rounded-3xl p-8 shadow-2xl border border-white/10 aspect-[4/3] flex flex-col justify-between overflow-hidden group">
-              {/* Abstract Card Visual */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
-              <div className="flex justify-between items-start">
-                <div className="text-white/80 font-mono text-sm tracking-widest">
-                  DEBIT
-                </div>
-                <CreditCard className="text-secondary w-8 h-8" />
-              </div>
-
-              <div className="space-y-6 relative">
-                <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/5 transform transition-transform group-hover:translate-x-2 duration-500">
-                  <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <TrendingUp className="text-green-400 w-5 h-5" />
+            <div
+            // style={{
+            //   backgroundImage: "url('images/sencha-cards.png')",
+            //   backgroundSize: "contain",
+            //   backgroundPosition: "center",
+            //   backgroundRepeat: "no-repeat",
+            // }}
+            >
+              <div
+                style={{
+                  backgroundImage: "url('/svgs/sencha-cards.svg')",
+                  backgroundSize: "contain",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+                className="relative z-10 bg-gradient-to-br from-primary to-[#0f2e1b] bg-primary rounded-3xl p-8 shadow-2xl border border-white/10 aspect-[4/3] flex flex-col justify-between overflow-hidden group"
+              >
+                {/* Abstract Card Visual */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <div className="flex justify-between items-start">
+                  <div className="text-white/80 font-mono text-sm tracking-widest">
+                    DEBIT
                   </div>
-                  <div>
-                    <div className="text-xs text-white/60">
-                      Credit Score Impact
-                    </div>
-                    <div className="text-lg font-bold text-white">
-                      +45 pts{" "}
-                      <span className="text-xs font-normal text-white/60">
-                        / 6 mo
-                      </span>
-                    </div>
-                  </div>
+                  <CreditCard className="text-secondary w-8 h-8" />
                 </div>
 
-                <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/5 transform transition-transform group-hover:translate-x-2 duration-500 delay-75">
-                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
-                    <ShieldCheck className="text-blue-400 w-5 h-5" />
+                <div className="space-y-6 relative">
+                  <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/5 transform transition-transform group-hover:translate-x-2 duration-500">
+                    <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                      <TrendingUp className="text-green-400 w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-white/60">
+                        Credit Score Impact
+                      </div>
+                      <div className="text-lg font-bold text-white">
+                        +45 pts{" "}
+                        <span className="text-xs font-normal text-white/60">
+                          / 6 mo
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-xs text-white/60">Risk Exposure</div>
-                    <div className="text-lg font-bold text-white">
-                      0%{" "}
-                      <span className="text-xs font-normal text-white/60">
-                        Secured
-                      </span>
+
+                  <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/5 transform transition-transform group-hover:translate-x-2 duration-500 delay-75">
+                    <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                      <ShieldCheck className="text-blue-400 w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-white/60">Risk Exposure</div>
+                      <div className="text-lg font-bold text-white">
+                        0%{" "}
+                        <span className="text-xs font-normal text-white/60">
+                          Secured
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
