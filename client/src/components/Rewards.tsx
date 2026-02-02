@@ -118,7 +118,7 @@ export default function Rewards() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary to-secondary rounded-3xl p-12 text-white">
+          <div className="bg-accent rounded-2xl p-12 text-primary">
             <h3 className="text-3xl font-bold mb-4">
               Join 50,000+ Members Building Credit Smartly
             </h3>
