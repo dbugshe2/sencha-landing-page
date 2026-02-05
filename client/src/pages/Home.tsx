@@ -17,14 +17,12 @@ import {
   ArrowRight,
   Users,
   Zap,
-  Lock,
   BarChart3,
   Globe,
   Award,
-  Clock,
   ChevronDown,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 
 /**
@@ -46,9 +44,11 @@ function Navbar() {
 
   return (
     <motion.nav
-      className={`fixed left-1/2 w-full transform -translate-x-1/2 z-50 transition-all duration-500 ${isScrolled
-          ? "top-8 bg-secondary border border-secondary rounded-full shadow-lg px-4 md:px-8 py-1 md:py-3 max-w-4xl mx-auto"
-          : " bg-secondary px-4 md:px-6 py-1 md:py-4 w-full max-w-full"
+      className={`fixed container mx-auto left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 
+        ${
+          isScrolled
+            ? "md:top-6 w-auto glass-card rounded-full shadow-neo px-6 md:px-8 py-2 md:py-3 max-w-4xl mx-auto border-2 border-foreground/10"
+            : "w-full bg-primary rounded-b-3xl md:rounded-b-[2rem] px-4 md:px-6 py-3 md:py-4 max-w-full"
         }`}
     >
       <div className={`${isScrolled ? "" : "container mx-auto px-6"}`}>
@@ -56,35 +56,33 @@ function Navbar() {
           <a href="/#0" className="shrink-0">
             <img
               src="/svgs/sencha-logo-black.svg"
-              className={isScrolled ? "shrink-0 w-24 h-12 " : "shrink-0 w-32 h-16"}
+              className={
+                isScrolled ? "shrink-0 w-24 h-10" : "shrink-0 w-28 h-12"
+              }
               alt="Sencha"
             />
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="#features"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Features
-            </a>
+          <div className="hidden md:flex items-center space-x-6">
             <a
               href="#how-it-works"
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-primary-foreground font-semibold hover:text-secondary transition-colors"
             >
-              How It Works
+              How it Works
             </a>
-            {/* <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">Testimonials</a> */}
-            {/* <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a> */}
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground border-0">
-              Get a Demo
-            </Button>
+            <a
+              href="#rewards"
+              className="text-primary-foreground/80 font-semibold hover:text-secondary transition-colors"
+            >
+              Rewards
+            </a>
+            <Button variant="neo-secondary">Get a Demo</Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground hover:bg-primary/20 rounded-lg transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -98,38 +96,24 @@ function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 pt-4 border-t border-gray-100"
+              className="md:hidden mt-4 pt-4 border-t-2 border-primary/20"
             >
               <div className="flex flex-col space-y-4">
                 <a
-                  href="#features"
-                  className="text-foreground hover:text-primary"
+                  href="#how-it-works"
+                  className="text-foreground font-medium hover:text-secondary py-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  Features
+                  How it Works
                 </a>
                 <a
-                  href="#how-it-works"
-                  className="text-foreground hover:text-primary"
+                  href="#rewards"
+                  className="text-foreground font-medium hover:text-secondary py-2"
                   onClick={() => setIsOpen(false)}
                 >
-                  How It Works
+                  Rewards
                 </a>
-                {/* <a
-                  href="#testimonials"
-                  className="text-foreground hover:text-primary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Testimonials
-                </a> */}
-                {/* <a
-                  href="#pricing"
-                  className="text-foreground hover:text-primary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Pricing
-                </a> */}
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground border-0 w-full">
+                <Button className="bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground w-full shadow-neo-sm border-2 border-foreground/10">
                   Get a Demo
                 </Button>
               </div>
@@ -147,18 +131,16 @@ function Navbar() {
  */
 function Hero() {
   return (
-    <section className="relative min-h-screen pt-18 flex items-center justify-center overflow-hidden bg-accent">
-      {/* Simple Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-secondary/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-secondary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-secondary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-40 right-20 w-72 h-72 bg-secondary/5 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+    <section className="relative min-h-screen pt-28 flex items-center justify-center overflow-hidden bg-primary">
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-20 w-80 h-80 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/3 right-16 w-64 h-64 bg-secondary/20 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute bottom-32 left-1/3 w-72 h-72 bg-tertiary/15 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 pt-16">
-        <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-6 lg:gap-12 lg:items-center">
+      <div className="container mx-auto px-6 relative z-10 pt-8">
+        <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-6 lg:gap-16 lg:items-center">
           {/* Left side - Hero text */}
           <div className="text-center lg:col-span-3 lg:text-left">
             <motion.div
@@ -166,21 +148,21 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center px-2 py-2 bg-primary text-primary-foreground rounded-full text-xs font-semibold mb-8">
-                <div className="w-5 h-5 bg-primary-foreground animate-pulse rounded-full flex items-center justify-center mr-2">
-                  <Zap className="w-4 h-4 fill-primary" />
+              <div className="inline-flex items-center px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-xs font-semibold mb-8 shadow-neo-sm border-2 border-secondary/20">
+                <div className="w-5 h-5 bg-primary animate-pulse rounded-full flex items-center justify-center mr-2">
+                  <Zap className="w-3 h-3 text-primary-foreground" />
                 </div>
-                NOW AVAILABLE FOR COMMUNITY BANKS AND CREDIT UNIONS
+                NOW AVAILABLE FOR COMMUNITY BANKS
               </div>
 
-              <h1 className="text-5xl md:text-6xl  text-foreground mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-6 leading-tight font-medium">
                 Risk Free&nbsp;
-                <span className="text-accent-foreground font-bold">
+                <span className="text-secondary font-bold">
                   Credit Building
                 </span>
               </h1>
 
-              <p className="text-xl text-accent-foreground mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-xl text-primary-foreground font-medium mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Empower your members with credit-building debit cards. Turn
                 everyday transactions into credit building opportunities.
               </p>
@@ -188,32 +170,45 @@ function Hero() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
                 <Button
                   size="lg"
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground border-0 px-8 py-4 text-lg"
+                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-6 text-lg shadow-neo hover:shadow-neo-lg hover:-translate-y-1 transition-all border-2 border-secondary/30"
                 >
                   Get a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                {/* <Button size="lg"  className="border-secondary/20 bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg">
-                Watch Demo
-              </Button> */}
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-foreground/20 bg-white/50 backdrop-blur-sm hover:bg-white/80 text-foreground px-8 py-6 text-lg"
+                >
+                  Learn More
+                </Button>
               </div>
 
-              <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">
+              {/* Stats with glass cards */}
+              <div className="grid grid-cols-3 gap-4 mt-16 max-w-xl mx-auto lg:mx-0">
+                <div className="glass-card rounded-xl p-4 text-center shadow-neo-sm border-2 border-white/50 bg-white/40">
+                  <div className="text-2xl md:text-3xl font-extrabold text-tertiary mb-1">
                     18 - 45+
                   </div>
-                  <div className="text-foreground text-sm">Age Range</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">0%</div>
-                  <div className="text-foreground text-sm">Debt Risk</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    10+
+                  <div className="text-primary-foreground font-medium text-xs md:text-sm">
+                    Age Range
                   </div>
-                  <div className="text-foreground text-sm">Users Helped</div>
+                </div>
+                <div className="glass-card rounded-xl p-4 text-center shadow-neo-sm border-2 border-white/50 bg-white/40">
+                  <div className="text-2xl md:text-3xl font-extrabold text-secondary mb-1">
+                    0%
+                  </div>
+                  <div className="text-primary-foreground font-medium text-xs md:text-sm">
+                    Debt Risk
+                  </div>
+                </div>
+                <div className="glass-card rounded-xl p-4 text-center shadow-neo-sm border-2 border-white/50 bg-white/40">
+                  <div className="text-2xl md:text-3xl font-extrabold text-primary-foreground mb-1">
+                    10K+
+                  </div>
+                  <div className="text-primary-foreground font-medium text-xs md:text-sm">
+                    Users Helped
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -240,7 +235,9 @@ function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <ChevronDown className="w-6 h-6 text-muted-foreground/50" />
+          <div className="w-10 h-10 rounded-full glass flex items-center justify-center">
+            <ChevronDown className="w-5 h-5 text-foreground/60" />
+          </div>
         </motion.div>
       </div>
     </section>
@@ -357,29 +354,29 @@ function HowItWorks() {
       title: "Sign Up",
       description:
         "Gen Z users download your app and sign up for the credit-building debit card in minutes.",
-      image:
-        "https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Mobile+Signup",
+      color: "bg-primary",
+      textColor: "text-primary-foreground",
     },
     {
       step: "02",
       title: "Spend Daily",
       description:
         "Members use their debit card for everyday purchases like coffee, groceries, and subscriptions.",
-      image:
-        "https://via.placeholder.com/400x300/10B981/FFFFFF?text=Daily+Spending",
+      color: "bg-secondary",
+      textColor: "text-secondary-foreground",
     },
     {
       step: "03",
       title: "Build Credit",
       description:
         "We automatically report positive payment history to all major credit bureaus each month.",
-      image:
-        "https://via.placeholder.com/400x300/F59E0B/FFFFFF?text=Credit+Growth",
+      color: "bg-tertiary",
+      textColor: "text-tertiary-foreground",
     },
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-secondary">
+    <section id="how-it-works" className="py-24 bg-accent">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -387,44 +384,49 @@ function HowItWorks() {
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             How It Works
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-muted-foreground leading-relaxed">
             A simple 3-step process that helps Gen Z build credit without debt
             risk.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {steps.map((step, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.2 }}
+              transition={{ delay: idx * 0.15 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative group"
             >
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 h-full">
-                <div className="text-4xl font-bold text-gray-300 mb-4">
+              <div
+                className={`${step.color} rounded-2xl p-8 h-full shadow-neo border-2 border-foreground/10 hover:shadow-neo-lg hover:-translate-y-1 transition-all`}
+              >
+                {/* Step Number */}
+                <div
+                  className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm ${step.textColor} text-2xl font-bold mb-6 border-2 border-white/30`}
+                >
                   {step.step}
                 </div>
-                <img
-                  src={step.image}
-                  alt={step.title}
-                  className="w-full h-48 object-cover rounded-xl mb-6"
-                />
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+
+                <h3 className={`text-2xl font-bold ${step.textColor} mb-4`}>
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className={`${step.textColor} opacity-90 leading-relaxed`}>
                   {step.description}
                 </p>
 
-                {/* Connection Line */}
+                {/* Connection Arrow */}
                 {idx < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-gray-300 to-transparent"></div>
+                  <div className="hidden md:flex absolute top-1/2 -right-3 lg:-right-4 transform -translate-y-1/2 z-10">
+                    <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-white shadow-neo-sm flex items-center justify-center border-2 border-foreground/10">
+                      <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 text-foreground" />
+                    </div>
+                  </div>
                 )}
               </div>
             </motion.div>
@@ -625,10 +627,11 @@ function Pricing() {
               )}
 
               <div
-                className={`h-full rounded-2xl p-8 border-2 transition-all duration-300 ${plan.featured
+                className={`h-full rounded-2xl p-8 border-2 transition-all duration-300 ${
+                  plan.featured
                     ? "bg-primary border-primary text-primary-foreground shadow-2xl"
                     : "bg-card border-border hover:border-primary/50 hover:shadow-lg"
-                  }`}
+                }`}
               >
                 <div className="text-center mb-8">
                   <h3
@@ -652,10 +655,11 @@ function Pricing() {
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <CheckCircle2
-                        className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.featured
+                        className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                          plan.featured
                             ? "text-primary-foreground"
                             : "text-primary"
-                          }`}
+                        }`}
                       />
                       <span
                         className={`text-sm ${plan.featured ? "text-primary-foreground/80" : "text-muted-foreground"}`}
@@ -668,10 +672,11 @@ function Pricing() {
 
                 <Button
                   size="lg"
-                  className={`w-full h-12 rounded-xl font-medium transition-colors ${plan.featured
+                  className={`w-full h-12 rounded-xl font-medium transition-colors ${
+                    plan.featured
                       ? "bg-background text-primary hover:bg-background/90"
                       : "bg-primary hover:bg-primary/90 text-primary-foreground"
-                    }`}
+                  }`}
                 >
                   Get Started
                 </Button>
@@ -691,8 +696,8 @@ function CTA() {
   return (
     <section className="py-24 bg-secondary overflow-hidden relative">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -702,11 +707,11 @@ function CTA() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-accent-foreground mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-secondary-foreground mb-8 leading-tight">
               Ready to launch your <br />
               <span className="text-primary">credit-building</span> program?
             </h2>
-            <p className="text-xl text-accent-foreground/80 mb-10 leading-relaxed max-w-lg">
+            <p className="text-xl text-secondary-foreground/80 mb-10 leading-relaxed max-w-lg">
               Join forward-thinking institutions already empowering Gen Z with
               smart credit-building solutions. Our team is ready to help you
               thrive.
@@ -714,26 +719,26 @@ function CTA() {
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-accent-foreground font-medium text-lg">
+                <div className="text-secondary-foreground font-medium text-lg">
                   Quick 15-minute demo
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-accent-foreground font-medium text-lg">
+                <div className="text-secondary-foreground font-medium text-lg">
                   Custom integration roadmap
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-accent-foreground font-medium text-lg">
+                <div className="text-secondary-foreground font-medium text-lg">
                   Compliance & security overview
                 </div>
               </div>
@@ -759,29 +764,29 @@ function CTA() {
  */
 function Footer() {
   return (
-    <footer className="bg-primary  text-primary-foreground">
+    <footer className="section-dark">
       {/* Background decoration */}
-      <div className="relative flex py-4">
-        <div className="absolute top-0 right-0 -translate-y-1/2  w-[500px] h-[300px] bg-primary rounded-full  pointer-events-none"></div>
+      <div className="relative flex py-8">
+        <div className="absolute top-0 right-0 -translate-y-1/2 w-[400px] h-[200px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="flex-1">
           {/* Content */}
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-8 mb-12">
               <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center space-x-2 mb-6">
-                  <div className="w-20 h-20 px-2 bg-primary rounded-xl flex items-center justify-center">
+                  <div className="w-20 h-20 px-2 rounded-xl flex items-center justify-center">
                     <img src="svgs/sencha-logo-all-white.svg" alt="Sencha" />
                   </div>
                 </div>
-                <p className="text-primary-foreground max-w-sm mb-6">
+                <p className="text-white/80 max-w-sm mb-6">
                   Empower Your Members with Credit-Building Debit Cards
                 </p>
                 <div className="flex space-x-4">
-                  <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
-                    <Globe className="w-5 h-5" />
+                  <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer border border-white/10">
+                    <Globe className="w-5 h-5 text-white" />
                   </div>
-                  <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
-                    <Users className="w-5 h-5" />
+                  <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer border border-white/10">
+                    <Users className="w-5 h-5 text-white" />
                   </div>
                 </div>
               </div>
@@ -807,7 +812,7 @@ function Footer() {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-primary text-center text-primary-foreground text-sm">
+            <div className="pt-8 border-t border-white/10 text-center text-white/60 text-sm">
               <p>
                 &copy; {new Date().getFullYear()} Sencha Credit Inc. All rights
                 reserved.
@@ -830,7 +835,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Features />
+        {/* <Features /> */}
         <HowItWorks />
         <RewardsSection />
         {/* <Testimonials /> */}

@@ -39,7 +39,7 @@ export function BentoGridTemplateTwo({
     <div
       className={cn(
         "grid grid-cols-1 md:grid-cols-4 auto-rows-[minmax(180px,auto)]",
-        className
+        className,
       )}
       style={{ gap: `${gap * 0.25}rem` }}
     >
@@ -63,7 +63,7 @@ export function BentoGridTemplateTwo({
                 item.variant !== "glass" &&
                 "md:row-span-2",
               item.priority === 1 && "md:col-span-2 md:row-span-2",
-              isLastSingle && "md:col-span-4"
+              isLastSingle && "md:col-span-4",
             )}
           >
             <BentoGridItem item={item} />
@@ -102,21 +102,21 @@ function BentoGridItem({ item }: { item: BentoItem }) {
       classes.push(
         "bg-white dark:bg-gray-800",
         "text-gray-900 dark:text-gray-100",
-        "hover:bg-gray-100 dark:hover:bg-gray-700"
+        "hover:bg-gray-100 dark:hover:bg-gray-700",
       );
     }
   } else if (variant === "highlight") {
     classes.push(
       "bg-indigo-500 dark:bg-indigo-600",
       "text-white",
-      "hover:bg-indigo-600 dark:hover:bg-indigo-700"
+      "hover:bg-indigo-600 dark:hover:bg-indigo-700",
     );
   } else if (variant === "glass") {
     classes.push(
       "bg-white/10 dark:bg-black/10 backdrop-blur-sm",
       "border border-gray-200 dark:border-gray-700",
       "text-gray-900 dark:text-gray-100",
-      "hover:bg-white/20 dark:hover:bg-black/20"
+      "hover:bg-white/20 dark:hover:bg-black/20",
     );
   } else if (variant === "solid") {
     classes.push("text-white");
@@ -150,7 +150,7 @@ function BentoGridItem({ item }: { item: BentoItem }) {
                   ? hasImage
                     ? "bg-gray-800/60 text-white"
                     : "bg-indigo-100 text-indigo-700"
-                  : "bg-white/30 text-white"
+                  : "bg-white/30 text-white",
               )}
               style={accentColor ? { color: accentColor } : undefined}
             >

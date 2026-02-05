@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   BentoGridTemplateTwo,
   BentoItem,
@@ -27,7 +27,7 @@ export default function Rewards() {
       description:
         "Build your credit score with every purchase. Report to all 3 bureaus monthly.",
       variant: "solid",
-      color: "#1E5110",
+      color: "#157e3f",
       accentColor: "#FFFFFF",
       tag: "Core Feature",
     },
@@ -37,8 +37,8 @@ export default function Rewards() {
       description:
         "Spend only what you have. No overdraft fees, no interest, no debt accumulation.",
       variant: "solid",
-      color: "#FFC566",
-      accentColor: "#242424",
+      color: "#ffc566",
+      accentColor: "#253237",
     },
     {
       id: "4",
@@ -55,7 +55,7 @@ export default function Rewards() {
         "Set goals, track progress, and earn bonus rewards when you hit your targets.",
       size: "wide",
       variant: "glass",
-      accentColor: "#FFFFFF",
+      accentColor: "#253237",
     },
     {
       id: "6",
@@ -63,8 +63,8 @@ export default function Rewards() {
       description:
         "Access exclusive deals, travel benefits, and financial wellness tools.",
       variant: "solid",
-      color: "#DEF8EC",
-      accentColor: "#1E5110",
+      color: "#def8ec",
+      accentColor: "#157e3f",
       tag: "Premium",
     },
     {
@@ -79,14 +79,15 @@ export default function Rewards() {
       title: "Community Rewards",
       description:
         "Earn bonus rewards when friends join. Build credit together as a community.",
-      variant: "glass",
+      variant: "solid",
+      color: "#d47b0f",
       accentColor: "#FFFFFF",
       tag: "Social",
     },
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="rewards" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -118,30 +119,36 @@ export default function Rewards() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
-          <div className="bg-accent rounded-2xl p-12 text-primary">
-            <h3 className="text-3xl font-bold mb-4">
+          <div className="section-dark rounded-2xl p-12 shadow-neo-lg border-2 border-foreground/5">
+            <h3 className="text-3xl font-bold mb-4 text-primary">
               Join 50,000+ Members Building Credit Smartly
             </h3>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-xl mb-8 text-white/80">
               Start earning rewards from day one. No hidden fees, no credit
               check, just pure financial empowerment.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">$2.5M+</div>
-                <div className="text-sm opacity-80">
+              <div className="text-center glass-subtle rounded-xl p-6">
+                <div className="text-4xl font-bold mb-2 text-primary">
+                  $2.5M+
+                </div>
+                <div className="text-sm text-white/70">
                   Cashback Paid to Members
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">750+</div>
-                <div className="text-sm opacity-80">
+              <div className="text-center glass-subtle rounded-xl p-6">
+                <div className="text-4xl font-bold mb-2 text-secondary">
+                  750+
+                </div>
+                <div className="text-sm text-white/70">
                   Credit Score Points Average Increase
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">100K+</div>
-                <div className="text-sm opacity-80">
+              <div className="text-center glass-subtle rounded-xl p-6">
+                <div className="text-4xl font-bold mb-2 text-tertiary">
+                  100K+
+                </div>
+                <div className="text-sm text-white/70">
                   Financial Goals Achieved
                 </div>
               </div>
