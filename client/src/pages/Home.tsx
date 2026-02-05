@@ -130,10 +130,41 @@ function Navbar() {
  * @returns The Hero section component.
  */
 function Hero() {
+  /**
+   * as the user scrolls, the background image zooms in and scrolls with the user
+   * 
+   */
+
+  //   const [imageScale, setImageScale] = useState(1);
+  // const [imageOffset, setImageOffset] = useState(0);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollRatio = window.scrollY / window.innerHeight;
+  //     setImageScale(1 + scrollRatio * 0.5);
+  //     setImageOffset(-window.scrollY * 0.5);
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+
+  
+
   return (
     <section className="relative min-h-screen pt-28 flex items-center justify-center overflow-hidden bg-primary">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
+        <div
+        
+    // style={{
+    //     backgroundImage: `url('/images/genz01.jpg')`,
+    //     backgroundSize: `${imageScale} 100%`,
+    //     backgroundPosition: `center ${imageOffset}px`,
+    //     backgroundRepeat: isScrolled ? "no-repeat" : "no-repeat",
+    //   }}
+          className="scroll-m-24 absolute top-0 left-0 w-full h-full"
+        ></div>
         <div className="absolute top-20 left-20 w-80 h-80 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
         <div className="absolute top-1/3 right-16 w-64 h-64 bg-secondary/20 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-2000"></div>
         <div className="absolute bottom-32 left-1/3 w-72 h-72 bg-tertiary/15 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-4000"></div>
@@ -152,7 +183,7 @@ function Hero() {
                 <div className="w-5 h-5 bg-primary animate-pulse rounded-full flex items-center justify-center mr-2">
                   <Zap className="w-3 h-3 text-primary-foreground" />
                 </div>
-                NOW AVAILABLE FOR COMMUNITY BANKS
+                NOW AVAILABLE FOR COMMUNITY BANKS AND CREDIT UNIONS
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-6 leading-tight font-medium">

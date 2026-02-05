@@ -23,7 +23,7 @@ export default function Rewards() {
     },
     {
       id: "2",
-      title: "Credit Score Builder",
+      title: "Credit Builder",
       description:
         "Build your credit score with every purchase. Report to all 3 bureaus monthly.",
       variant: "solid",
@@ -121,11 +121,12 @@ export default function Rewards() {
         >
           <div className="section-dark rounded-2xl p-12 shadow-neo-lg border-2 border-foreground/5">
             <h3 className="text-3xl font-bold mb-4 text-primary">
-              Join 50,000+ Members Building Credit Smartly
+              
+            
+Members get access to transaction history as well as real time insights into their credit history
             </h3>
             <p className="text-xl mb-8 text-white/80">
-              Start earning rewards from day one. No hidden fees, no credit
-              check, just pure financial empowerment.
+View your credit score and unlock access to new credit facilities.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center glass-subtle rounded-xl p-6">
