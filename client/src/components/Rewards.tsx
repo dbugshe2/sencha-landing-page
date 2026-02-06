@@ -122,35 +122,35 @@ export default function Rewards() {
           <div className="section-dark rounded-2xl p-12 shadow-neo-lg border-2 border-foreground/5">
             <h3 className="text-3xl font-bold mb-4 text-primary">
               
-            
-Members get access to transaction history as well as real time insights into their credit history
+            View your credit score and unlock access to new credit facilities.
+
             </h3>
             <p className="text-xl mb-8 text-white/80">
-View your credit score and unlock access to new credit facilities.
+Members get access to transaction history as well as real time insights into their credit history
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="text-center glass-subtle rounded-xl p-6">
-                <div className="text-4xl font-bold mb-2 text-primary">
-                  $2.5M+
+              <div className="text-center bg-background text-foreground shadow-neo rounded-xl p-6">
+                <div className="text-4xl font-bold mb-2">
+                  676
                 </div>
-                <div className="text-sm text-white/70">
-                  Cashback Paid to Members
-                </div>
-              </div>
-              <div className="text-center glass-subtle rounded-xl p-6">
-                <div className="text-4xl font-bold mb-2 text-secondary">
-                  750+
-                </div>
-                <div className="text-sm text-white/70">
-                  Credit Score Points Average Increase
+                <div className="text-sm font-medium">
+                  Average Gen Z Credit Score
                 </div>
               </div>
-              <div className="text-center glass-subtle rounded-xl p-6">
-                <div className="text-4xl font-bold mb-2 text-tertiary">
-                  100K+
+              <div className="text-center bg-background text-foreground shadow-neo rounded-xl p-6">
+                <div className="text-4xl font-bold mb-2">
+                  80%
                 </div>
-                <div className="text-sm text-white/70">
-                  Financial Goals Achieved
+                <div className="text-sm font-medium">
+                  Gen Z Adults Have No Credit History
+                </div>
+              </div>
+              <div className="text-center bg-background text-foreground shadow-neo rounded-xl p-6">
+                <div className="text-4xl font-bold mb-2">
+                  51%
+                </div>
+                <div className="text-sm font-medium">
+                  GenZ Trust Fintech over traditional banks
                 </div>
               </div>
             </div>

@@ -179,7 +179,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-xs font-semibold mb-8 shadow-neo-sm border-2 border-secondary/20">
+              <div className="inline-flex items-center px-2 bg-secondary text-secondary-foreground rounded-full text-xs font-semibold mb-8 shadow-neo-sm border-2 border-secondary/20">
                 <div className="w-5 h-5 bg-primary animate-pulse rounded-full flex items-center justify-center mr-2">
                   <Zap className="w-3 h-3 text-primary-foreground" />
                 </div>
