@@ -113,8 +113,8 @@ function Navbar() {
                 >
                   Rewards
                 </a>
-                <Button className="bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground w-full shadow-neo-sm border-2 border-foreground/10">
-                  Get a Demo
+                <Button onClick={(e) =>{e.preventDefault()}}  asChild className="bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground w-full shadow-neo-sm border-2 border-foreground/10">
+                  <a href="#leads">Get a Demo</a>
                 </Button>
               </div>
             </motion.div>
@@ -173,21 +173,21 @@ function Hero() {
       <div className="container mx-auto px-6 relative z-10 pt-8">
         <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-6 lg:gap-16 lg:items-center">
           {/* Left side - Hero text */}
-          <div className="text-center lg:col-span-3 lg:text-left">
+          <div className="text-center lg:col-span-4 lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-flex items-center px-2 bg-secondary text-secondary-foreground rounded-full text-xs font-semibold mb-8 shadow-neo-sm border-2 border-secondary/20">
+              <div className="inline-flex items-center px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs font-semibold mb-2 shadow-neo-sm border-2 border-secondary/20">
                 <div className="w-5 h-5 bg-primary animate-pulse rounded-full flex items-center justify-center mr-2">
-                  <Zap className="w-3 h-3 text-primary-foreground" />
+                  <Zap className="w-3 h-3 text-tertiary" />
                 </div>
                 NOW AVAILABLE FOR COMMUNITY BANKS AND CREDIT UNIONS
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-6 leading-tight font-medium">
-                Risk Free&nbsp;
+                Risk-Free&nbsp;
                 <span className="text-secondary font-bold">
                   Credit Building
                 </span>
@@ -206,17 +206,17 @@ function Hero() {
                   Get a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   variant="outline"
                   className="border-2 border-foreground/20 bg-white/50 backdrop-blur-sm hover:bg-white/80 text-foreground px-8 py-6 text-lg"
                 >
                   Learn More
-                </Button>
+                </Button> */}
               </div>
 
               {/* Stats with glass cards */}
-              <div className="grid grid-cols-3 gap-4 mt-16 max-w-xl mx-auto lg:mx-0">
+              {/* <div className="grid grid-cols-3 gap-4 mt-16 max-w-xl mx-auto lg:mx-0">
                 <div className="glass-card rounded-xl p-4 text-center shadow-neo-sm border-2 border-white/50 bg-white/40">
                   <div className="text-2xl md:text-3xl font-extrabold text-tertiary mb-1">
                     18 - 45+
@@ -241,7 +241,7 @@ function Hero() {
                     Users Helped
                   </div>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
@@ -250,12 +250,12 @@ function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-12 lg:mt-0 lg:col-span-3"
+            className="mt-12 lg:mt-0 lg:col-span-2"
           >
             <DecorativeImage
               src="/images/genz01.jpg"
               alt="Sencha credit building cards"
-              className="max-w-sm w-80 mx-auto lg:max-w-md"
+              className={"max-w-sm w-80 mx-auto lg:max-w-md"}
             />
           </motion.div>
         </div>

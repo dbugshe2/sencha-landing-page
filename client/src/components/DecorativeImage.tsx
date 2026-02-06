@@ -105,11 +105,11 @@ export default function DecorativeImage({
             <Sparkles className="text-secondary-foreground w-6 h-6" />
           </div>
           <div>
-            <div className="text-xs font-bold text-primary italic uppercase tracking-wider">
-              Premium
+            <div className="text-xs font-bold text-foreground italic uppercase tracking-wider">
+              Rewards
             </div>
             <div className="text-[10px] text-foreground/70">
-              Verified Member
+              + many more
             </div>
           </div>
         </motion.div>
@@ -158,7 +158,7 @@ export default function DecorativeImage({
           }}
           className="absolute top-10 -right-6 p-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full shadow-lg z-20"
         >
-          <ShieldCheck className="text-primary w-5 h-5" />
+          <ShieldCheck className="text-white w-5 h-5" />
         </motion.div>
       </motion.div>
 
