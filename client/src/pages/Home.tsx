@@ -743,9 +743,8 @@ function CTA() {
               <span className="text-primary">credit-building</span> program?
             </h2>
             <p className="text-xl text-secondary-foreground/80 mb-10 leading-relaxed max-w-lg">
-              Join forward-thinking institutions already empowering Gen Z with
-              smart credit-building solutions. Our team is ready to help you
-              thrive.
+            Help your credit union/community bank spin up a credit builder program in no time
+
             </p>
 
             <div className="space-y-6">
@@ -754,7 +753,7 @@ function CTA() {
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
                 <div className="text-secondary-foreground font-medium text-lg">
-                  Quick 15-minute demo
+                  Relationship Deepening
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -762,7 +761,7 @@ function CTA() {
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
                 <div className="text-secondary-foreground font-medium text-lg">
-                  Custom integration roadmap
+                  Member Retention
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -770,7 +769,7 @@ function CTA() {
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
                 <div className="text-secondary-foreground font-medium text-lg">
-                  Compliance & security overview
+                  Deposit Growth
                 </div>
               </div>
             </div>

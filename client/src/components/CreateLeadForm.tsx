@@ -1,5 +1,8 @@
 import { motion } from "motion/react";
 import { ArrowRight, Loader2 } from "lucide-react";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
 
 /**
  * A simple form component for capturing lead information.
@@ -29,22 +32,16 @@ export function CreateLeadForm() {
             <label className="block text-gray-800 font-medium mb-2">
               Full Name
             </label>
-            <input
-              type="text"
-              placeholder="Jane Smith"
-              className="w-full h-12 rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-blue-500 transition-all px-4"
-            />
+            <Input type="text"
+                placeholder="Jane Smith"  className="w-full h-12 rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-secondary-500 transition-all px-4" />
           </div>
 
           <div>
             <label className="block text-gray-800 font-medium mb-2">
               Company / Institution
             </label>
-            <input
-              type="text"
-              placeholder="First National Bank"
-              className="w-full h-12 rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-blue-500 transition-all px-4"
-            />
+            <Input type="text"
+              placeholder="First National Bank"  className="w-full h-12 rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-secondary-500 transition-all px-4" />
           </div>
         </div>
 
@@ -52,29 +49,24 @@ export function CreateLeadForm() {
           <label className="block text-gray-800 font-medium mb-2">
             Work Email
           </label>
-          <input
-            type="email"
-            placeholder="jane@bank.com"
-            className="w-full h-12 rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-blue-500 transition-all px-4"
-          />
+            <Input type="email"
+            placeholder="jane@bank.com"  className="w-full h-12 rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-secondary-500 transition-all px-4" />
         </div>
 
         <div>
           <label className="block text-gray-800 font-medium mb-2">
             How can we help?
           </label>
-          <textarea
-            placeholder="Tell us about your institution's goals..."
-            className="w-full min-h-[120px] rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-blue-500 transition-all resize-none px-4 py-3"
-          />
+          <Textarea placeholder="Tell us about your institution's goals..." className="w-full min-h-[120px] rounded-lg bg-gray-50 border border-gray-300 focus:bg-white focus:border-secondary-500 transition-all resize-none px-4 py-3" />
         </div>
 
-        <button
+        <Button
           type="submit"
-          className="w-full h-14 text-lg font-semibold rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+          disabled
+          className="w-full h-14 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
         >
           Request Demo <ArrowRight className="w-5 h-5" />
-        </button>
+        </Button>
       </form>
     </motion.div>
   );
