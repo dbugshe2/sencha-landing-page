@@ -67,7 +67,7 @@ function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             <a
               href="#how-it-works"
-              className="text-primary-foreground font-semibold hover:text-secondary transition-colors"
+              className="text-primary-foreground whitespace-nowrap font-semibold hover:text-secondary transition-colors"
             >
               How it Works
             </a>
@@ -77,7 +77,12 @@ function Navbar() {
             >
               Rewards
             </a>
-            <Button variant="neo-secondary">Get a Demo</Button>
+              <Button
+                  asChild
+                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
+                >
+                  <a href="#leads">Get Demo</a>
+                </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -113,8 +118,11 @@ function Navbar() {
                 >
                   Rewards
                 </a>
-                <Button onClick={(e) =>{e.preventDefault()}}  asChild className="bg-tertiary hover:bg-tertiary/90 text-tertiary-foreground w-full shadow-neo-sm border-2 border-foreground/10">
-                  <a href="#leads">Get a Demo</a>
+                  <Button
+                  asChild
+                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
+                >
+                  <a href="#leads">Get Demo</a>
                 </Button>
               </div>
             </motion.div>
@@ -132,7 +140,7 @@ function Navbar() {
 function Hero() {
   /**
    * as the user scrolls, the background image zooms in and scrolls with the user
-   * 
+   *
    */
 
   //   const [imageScale, setImageScale] = useState(1);
@@ -149,20 +157,17 @@ function Hero() {
   //   return () => window.removeEventListener("scroll", handleScroll);
   // }, []);
 
-  
-
   return (
     <section className="relative min-h-screen pt-28 flex items-center justify-center overflow-hidden bg-primary">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-        
-    // style={{
-    //     backgroundImage: `url('/images/genz01.jpg')`,
-    //     backgroundSize: `${imageScale} 100%`,
-    //     backgroundPosition: `center ${imageOffset}px`,
-    //     backgroundRepeat: isScrolled ? "no-repeat" : "no-repeat",
-    //   }}
+          // style={{
+          //     backgroundImage: `url('/images/genz01.jpg')`,
+          //     backgroundSize: `${imageScale} 100%`,
+          //     backgroundPosition: `center ${imageOffset}px`,
+          //     backgroundRepeat: isScrolled ? "no-repeat" : "no-repeat",
+          //   }}
           className="scroll-m-24 absolute top-0 left-0 w-full h-full"
         ></div>
         <div className="absolute top-20 left-20 w-80 h-80 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
@@ -199,12 +204,18 @@ function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                   {/* <Button
+                  asChild
+                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
+                >
+                </Button> */}
                 <Button
+                asChild
                   size="lg"
                   className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-6 text-lg shadow-neo hover:shadow-neo-lg hover:-translate-y-1 transition-all border-2 border-secondary/30"
                 >
-                  Get a Demo
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <a href="#leads">Get a Demo  <ArrowRight className="ml-2 w-5 h-5" /></a>
+                 
                 </Button>
                 {/* <Button
                   size="lg"
@@ -725,7 +736,7 @@ function Pricing() {
  */
 function CTA() {
   return (
-    <section className="py-24 bg-secondary overflow-hidden relative">
+    <section id="leads" className="py-24 bg-secondary overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -743,8 +754,8 @@ function CTA() {
               <span className="text-primary">credit-building</span> program?
             </h2>
             <p className="text-xl text-secondary-foreground/80 mb-10 leading-relaxed max-w-lg">
-            Help your credit union/community bank spin up a credit builder program in no time
-
+              Help your credit union/community bank spin up a credit builder
+              program in no time
             </p>
 
             <div className="space-y-6">
