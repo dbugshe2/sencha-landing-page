@@ -23,42 +23,55 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+import React from "react";
 
 /**
  * Modern navigation bar with glassmorphism effect and smooth animations.
  * @returns The Navbar component.
  */
-function Navbar() {
+function Navbar({ isHeroScrolled }: { isHeroScrolled: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 3);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const navbarClasses = cn(
+    "fixed -translate-x-1/2  left-1/2 transform transition-transform z-50 shadow-neo px-6 md:px-8 py-2  md:py-4 ease-in-out duration-1000 container mx-auto rounded-b-3xl md:rounded-b-[2rem]",
+    !isHeroScrolled && !isScrolled && "bg-secondary ",
+    isScrolled &&
+      !isHeroScrolled &&
+      "duration-1000 ease-in  border-2 border-foreground/10 bg-secondary",
+    isScrolled &&
+      isHeroScrolled &&
+      "duration-1000 ease-in border-2 border-foreground/10 bg-primary",
+  );
+
   return (
-    <motion.nav
-      className={`fixed container mx-auto left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 
-        ${
-          isScrolled
-            ? "md:top-6 w-auto glass-card rounded-full shadow-neo px-6 md:px-8 py-2 md:py-3 max-w-4xl mx-auto border-2 border-foreground/10"
-            : "w-full bg-primary rounded-b-3xl md:rounded-b-[2rem] px-4 md:px-6 py-3 md:py-4 max-w-full"
-        }`}
-    >
-      <div className={`${isScrolled ? "" : "container mx-auto px-6"}`}>
+    <motion.nav className={navbarClasses}>
+      <div>
         <div className="flex items-center space-x-8 justify-between">
-          <a href="/#0" className="shrink-0">
+          <a href="#" onClick={scrollToTop} className="shrink-0">
             <img
-              src="/svgs/sencha-logo-black.svg"
-              className={
-                isScrolled ? "shrink-0 w-24 h-10" : "shrink-0 w-28 h-12"
+              src={
+                isScrolled
+                  ? "/svgs/sencha-logo-black.svg"
+                  : "/svgs/sencha-logo-all-white.svg"
               }
+              className={cn("shrink-0 w-24 h-10 ")}
               alt="Sencha"
             />
           </a>
@@ -67,22 +80,39 @@ function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             <a
               href="#how-it-works"
-              className="text-primary-foreground whitespace-nowrap font-semibold hover:text-secondary transition-colors"
+              className={cn(
+                isScrolled
+                  ? "text-primary-foreground hover:text-secondary"
+                  : "text-secondary-foreground hover:text-primary",
+                " whitespace-nowrap duration-1000 font-semibold  transition-colors",
+              )}
             >
               How it Works
             </a>
             <a
               href="#rewards"
-              className="text-primary-foreground/80 font-semibold hover:text-secondary transition-colors"
+              className={cn(
+                "whitespace-nowrap duration-1000 font-semibold hover:text-secondary transition-colors",
+                isScrolled
+                  ? "text-primary-foreground hover:text-secondary"
+                  : "text-secondary-foreground hover:text-primary",
+              )}
             >
               Rewards
             </a>
-              <Button
-                  asChild
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
-                >
-                  <a href="#leads">Get Demo</a>
-                </Button>
+            <Button
+              asChild
+              className={cn(
+                "duration-1000",
+                isScrolled
+                  ? "bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
+                  : "bg-primary hover:bg-tertiary/90 text-foreground w-full shadow-neo-sm border-2 border-foreground/10",
+              )}
+            >
+              <a className="font-semibold" href="#leads">
+                Get Demo
+              </a>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -118,7 +148,7 @@ function Navbar() {
                 >
                   Rewards
                 </a>
-                  <Button
+                <Button
                   asChild
                   className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
                 >
@@ -137,97 +167,103 @@ function Navbar() {
  * Modern hero section with gradient background and animated elements.
  * @returns The Hero section component.
  */
-function Hero() {
-  /**
-   * as the user scrolls, the background image zooms in and scrolls with the user
-   *
-   */
+interface HeroProps {
+  onScrolledOut: (isScrolledOut: boolean) => void;
+}
 
-  //   const [imageScale, setImageScale] = useState(1);
-  // const [imageOffset, setImageOffset] = useState(0);
+const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
+  ({ onScrolledOut }, ref) => {
+    const internalRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollRatio = window.scrollY / window.innerHeight;
-  //     setImageScale(1 + scrollRatio * 0.5);
-  //     setImageOffset(-window.scrollY * 0.5);
-  //   };
+    useEffect(() => {
+      const handleScroll = () => {
+        const rect = internalRef.current?.getBoundingClientRect();
+        if (rect) {
+          onScrolledOut(rect.bottom <= 0);
+        }
+      };
 
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, [onScrolledOut]);
 
-  return (
-    <section className="relative min-h-screen pt-28 flex items-center justify-center overflow-hidden bg-primary">
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          // style={{
-          //     backgroundImage: `url('/images/genz01.jpg')`,
-          //     backgroundSize: `${imageScale} 100%`,
-          //     backgroundPosition: `center ${imageOffset}px`,
-          //     backgroundRepeat: isScrolled ? "no-repeat" : "no-repeat",
-          //   }}
-          className="scroll-m-24 absolute top-0 left-0 w-full h-full"
-        ></div>
-        <div className="absolute top-20 left-20 w-80 h-80 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/3 right-16 w-64 h-64 bg-secondary/20 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-32 left-1/3 w-72 h-72 bg-tertiary/15 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-4000"></div>
-      </div>
+    // Merge forwarded ref with internal ref
+    useEffect(() => {
+      if (!ref) return;
+      if (typeof ref === "function") {
+        ref(internalRef.current);
+      } else {
+        ref.current = internalRef.current;
+      }
+    }, [ref]);
 
-      <div className="container mx-auto px-6 relative z-10 pt-8">
-        <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-6 lg:gap-16 lg:items-center">
-          {/* Left side - Hero text */}
-          <div className="text-center lg:col-span-4 lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs font-semibold mb-2 shadow-neo-sm border-2 border-secondary/20">
-                <div className="w-5 h-5 bg-primary animate-pulse rounded-full flex items-center justify-center mr-2">
-                  <Zap className="w-3 h-3 text-tertiary" />
+    return (
+      <section
+        ref={internalRef}
+        className="relative min-h-screen pt-28 flex items-center justify-center overflow-hidden bg-primary"
+      >
+        {/* Enhanced Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="scroll-m-24 absolute top-0 left-0 w-full h-full"></div>
+          <div className="absolute top-20 left-20 w-80 h-80 bg-white/10 rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/3 right-16 w-64 h-64 bg-tertiary/40 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute bottom-32 left-1/3 w-72 h-72 bg-tertiary/25 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-4000"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 pt-8">
+          <div className="max-w-6xl mx-auto lg:grid lg:grid-cols-6 lg:gap-16 lg:items-center">
+            {/* Left side - Hero text */}
+            <div className="text-center lg:col-span-4 lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="inline-flex items-center px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs font-semibold mb-2 shadow-neo-sm border-2 border-secondary/20">
+                  <div className="w-5 h-5 bg-primary animate-pulse rounded-full flex items-center justify-center mr-2">
+                    <Zap className="w-3 h-3 text-tertiary" />
+                  </div>
+                  NOW AVAILABLE FOR COMMUNITY BANKS AND CREDIT UNIONS
                 </div>
-                NOW AVAILABLE FOR COMMUNITY BANKS AND CREDIT UNIONS
-              </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-6 leading-tight font-medium">
-                Risk-Free&nbsp;
-                <span className="text-secondary font-bold">
-                  Credit Building
-                </span>
-              </h1>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl text-primary-foreground mb-6 leading-tight font-medium">
+                  Risk-Free&nbsp;
+                  <span className="text-secondary font-bold">
+                    Credit Building
+                  </span>
+                </h1>
 
-              <p className="text-xl text-primary-foreground font-medium mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Empower your members with credit-building debit cards. Turn
-                everyday transactions into credit building opportunities.
-              </p>
+                <p className="text-xl text-primary-foreground font-medium mb-12 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                  Empower your members with credit-building debit cards. Turn
+                  everyday transactions into credit building opportunities.
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                   {/* <Button
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                  {/* <Button
                   asChild
                   className="bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
                 >
                 </Button> */}
-                <Button
-                asChild
-                  size="lg"
-                  className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-6 text-lg shadow-neo hover:shadow-neo-lg hover:-translate-y-1 transition-all border-2 border-secondary/30"
-                >
-                  <a href="#leads">Get a Demo  <ArrowRight className="ml-2 w-5 h-5" /></a>
-                 
-                </Button>
-                {/* <Button
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-6 text-lg shadow-neo hover:shadow-neo-lg hover:-translate-y-1 transition-all border-2 border-secondary/30"
+                  >
+                    <a href="#leads">
+                      Get a Demo <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </Button>
+                  {/* <Button
                   size="lg"
                   variant="outline"
                   className="border-2 border-foreground/20 bg-white/50 backdrop-blur-sm hover:bg-white/80 text-foreground px-8 py-6 text-lg"
                 >
                   Learn More
                 </Button> */}
-              </div>
+                </div>
 
-              {/* Stats with glass cards */}
-              {/* <div className="grid grid-cols-3 gap-4 mt-16 max-w-xl mx-auto lg:mx-0">
+                {/* Stats with glass cards */}
+                {/* <div className="grid grid-cols-3 gap-4 mt-16 max-w-xl mx-auto lg:mx-0">
                 <div className="glass-card rounded-xl p-4 text-center shadow-neo-sm border-2 border-white/50 bg-white/40">
                   <div className="text-2xl md:text-3xl font-extrabold text-tertiary mb-1">
                     18 - 45+
@@ -253,38 +289,39 @@ function Hero() {
                   </div>
                 </div>
               </div> */}
+              </motion.div>
+            </div>
+
+            {/* Right side - Decorative image */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-12 lg:mt-0 lg:col-span-2"
+            >
+              <DecorativeImage
+                src="/images/genz01.jpg"
+                alt="Sencha credit building cards"
+                className={"max-w-sm w-80 mx-auto lg:max-w-md"}
+              />
             </motion.div>
           </div>
 
-          {/* Right side - Decorative image */}
+          {/* Scroll Indicator */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-12 lg:mt-0 lg:col-span-2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
-            <DecorativeImage
-              src="/images/genz01.jpg"
-              alt="Sencha credit building cards"
-              className={"max-w-sm w-80 mx-auto lg:max-w-md"}
-            />
+            <div className="w-10 h-10 rounded-full glass flex items-center justify-center">
+              <ChevronDown className="w-5 h-5 text-foreground/60" />
+            </div>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-10 h-10 rounded-full glass flex items-center justify-center">
-            <ChevronDown className="w-5 h-5 text-foreground/60" />
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+      </section>
+    );
+  },
+);
 
 /**
  * Features section with modern card design.
@@ -736,7 +773,7 @@ function Pricing() {
  */
 function CTA() {
   return (
-    <section id="leads" className="py-24 bg-secondary overflow-hidden relative">
+    <section id="leads" className="py-24 bg-accent overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -753,7 +790,7 @@ function CTA() {
               Ready to launch your <br />
               <span className="text-primary">credit-building</span> program?
             </h2>
-            <p className="text-xl text-secondary-foreground/80 mb-10 leading-relaxed max-w-lg">
+            <p className="text-xl text-secondary/80 mb-10 leading-relaxed max-w-lg">
               Help your credit union/community bank spin up a credit builder
               program in no time
             </p>
@@ -763,7 +800,7 @@ function CTA() {
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-secondary-foreground font-medium text-lg">
+                <div className="text-secondary font-medium text-lg">
                   Relationship Deepening
                 </div>
               </div>
@@ -771,7 +808,7 @@ function CTA() {
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-secondary-foreground font-medium text-lg">
+                <div className="text-secondary font-medium text-lg">
                   Member Retention
                 </div>
               </div>
@@ -779,7 +816,7 @@ function CTA() {
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-secondary-foreground font-medium text-lg">
+                <div className="text-secondary font-medium text-lg">
                   Deposit Growth
                 </div>
               </div>
@@ -871,11 +908,18 @@ function Footer() {
  * @returns The Home page component.
  */
 export default function Home() {
+  const [isHeroScrolled, setIsHeroScrolled] = useState(false);
+
+  const heroRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="min-h-screen bg-background font-sans">
-      <Navbar />
+    <div className="min-h-screen bg-primary font-sans">
+      <Navbar isHeroScrolled={isHeroScrolled} />
       <main>
-        <Hero />
+        <Hero
+          ref={heroRef}
+          onScrolledOut={(isScrolled) => setIsHeroScrolled(isScrolled)}
+        />
         {/* <Features /> */}
         <HowItWorks />
         <RewardsSection />

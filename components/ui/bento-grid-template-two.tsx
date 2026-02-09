@@ -134,9 +134,9 @@ function BentoGridItem({ item }: { item: BentoItem }) {
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 dark:opacity-60"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
           />
-          <div className="absolute inset-0 bg-black/60 dark:bg-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         </div>
       )}
 

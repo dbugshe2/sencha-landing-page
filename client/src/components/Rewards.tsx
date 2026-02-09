@@ -13,12 +13,12 @@ export default function Rewards() {
   const rewardsData: BentoItem[] = [
     {
       id: "1",
-      title: "5% Cashback Everywhere",
-      description:
-        "Earn unlimited 5% cashback on all purchases - no categories, no caps, just pure rewards",
+      title: "",
+      description: "",
       size: "large",
       variant: "highlight",
-      tag: "Popular",
+      image: "/images/paying-with-sencha.jpg",
+      tag: "",
       accentColor: "#FFFFFF",
     },
     {
@@ -27,8 +27,8 @@ export default function Rewards() {
       description:
         "Build your credit score with every purchase. Report to all 3 bureaus monthly.",
       variant: "solid",
-      color: "#157e3f",
-      accentColor: "#FFFFFF",
+      color: "#def8ec",
+      accentColor: "#157e3f",
       tag: "Core Feature",
     },
     {
@@ -50,10 +50,10 @@ export default function Rewards() {
     },
     {
       id: "5",
-      title: "Smart Savings Goals",
-      description:
-        "Set goals, track progress, and earn bonus rewards when you hit your targets.",
+      title: "",
+      description: "",
       size: "wide",
+      image: "/images/easy-to-use.jpg",
       variant: "glass",
       accentColor: "#253237",
     },
@@ -79,10 +79,8 @@ export default function Rewards() {
       title: "Community Rewards",
       description:
         "Earn bonus rewards when friends join. Build credit together as a community.",
-      variant: "solid",
-      color: "#d47b0f",
-      accentColor: "#FFFFFF",
-      tag: "Social",
+      variant: "default",
+      tag: "",
     },
   ];
 
@@ -119,36 +117,29 @@ export default function Rewards() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
-          <div className="section-dark rounded-2xl p-12 shadow-neo-lg border-2 border-foreground/5">
-            <h3 className="text-3xl font-bold mb-4 text-primary">
-              
-            View your credit score and unlock access to new credit facilities.
-
+          <div className="section-accent rounded-2xl p-12">
+            <h3 className="text-3xl font-bold mb-4 text-secondary">
+              View your credit score and unlock access to new credit facilities.
             </h3>
-            <p className="text-xl mb-8 text-white/80">
-Members get access to transaction history as well as real time insights into their credit history
+            <p className="text-xl mb-8 text-foreground/70">
+              Members get access to transaction history as well as real time
+              insights into their credit history
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center bg-background text-foreground shadow-neo rounded-xl p-6">
-                <div className="text-4xl font-bold mb-2">
-                  676
-                </div>
+                <div className="text-4xl font-bold mb-2">676</div>
                 <div className="text-sm font-medium">
                   Average Gen Z Credit Score
                 </div>
               </div>
               <div className="text-center bg-background text-foreground shadow-neo rounded-xl p-6">
-                <div className="text-4xl font-bold mb-2">
-                  80%
-                </div>
+                <div className="text-4xl font-bold mb-2">80%</div>
                 <div className="text-sm font-medium">
                   Gen Z Adults Have No Credit History
                 </div>
               </div>
               <div className="text-center bg-background text-foreground shadow-neo rounded-xl p-6">
-                <div className="text-4xl font-bold mb-2">
-                  51%
-                </div>
+                <div className="text-4xl font-bold mb-2">51%</div>
                 <div className="text-sm font-medium">
                   GenZ Trust Fintech over traditional banks
                 </div>
