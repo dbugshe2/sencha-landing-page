@@ -50,14 +50,16 @@ function Navbar({ isHeroScrolled }: { isHeroScrolled: boolean }) {
   };
 
   const navbarClasses = cn(
-    "fixed -translate-x-1/2  left-1/2 transform transition-transform z-50 shadow-neo px-6 md:px-8 py-2  md:py-4 ease-in-out duration-1000 container mx-auto rounded-b-3xl md:rounded-b-[2rem]",
-    !isHeroScrolled && !isScrolled && "bg-secondary ",
+    "fixed -translate-x-1/2  left-1/2 transform transition-transform z-50 shadow-neo ease-in-out duration-1000 container mx-auto rounded-b-3xl md:rounded-b-[2rem]",
+    !isHeroScrolled &&
+      !isScrolled &&
+      "bg-secondary ease-in duration-500 px-6 md:px-8 py-2 md:py-4",
     isScrolled &&
       !isHeroScrolled &&
-      "duration-1000 ease-in  border-2 border-foreground/10 bg-secondary",
+      "duration-1000 ease-in duration-500  border-2 border-foreground/10 bg-secondary px-6 md:px-8 py-2 md:py-2",
     isScrolled &&
       isHeroScrolled &&
-      "duration-1000 ease-in border-2 border-foreground/10 bg-primary",
+      "duration-1000 ease-in duration-500 border-2 border-foreground/10 bg-primary px-6 md:px-8 py-2 md:py-1",
   );
 
   return (
@@ -67,11 +69,14 @@ function Navbar({ isHeroScrolled }: { isHeroScrolled: boolean }) {
           <a href="#" onClick={scrollToTop} className="shrink-0">
             <img
               src={
-                isScrolled
+                isScrolled && isHeroScrolled
                   ? "/svgs/sencha-logo-black.svg"
                   : "/svgs/sencha-logo-all-white.svg"
               }
-              className={cn("shrink-0 w-24 h-10 ")}
+              className={cn(
+                "shrink-0 transition-all duration-300",
+                isScrolled ? "w-20 h-8" : "w-24 h-10",
+              )}
               alt="Sencha"
             />
           </a>
@@ -81,10 +86,10 @@ function Navbar({ isHeroScrolled }: { isHeroScrolled: boolean }) {
             <a
               href="#how-it-works"
               className={cn(
-                isScrolled
+                isScrolled && isHeroScrolled
                   ? "text-primary-foreground hover:text-secondary"
                   : "text-secondary-foreground hover:text-primary",
-                " whitespace-nowrap duration-1000 font-semibold  transition-colors",
+                "whitespace-nowrap duration-300 font-semibold  transition-colors",
               )}
             >
               How it Works
@@ -92,8 +97,8 @@ function Navbar({ isHeroScrolled }: { isHeroScrolled: boolean }) {
             <a
               href="#rewards"
               className={cn(
-                "whitespace-nowrap duration-1000 font-semibold hover:text-secondary transition-colors",
-                isScrolled
+                "whitespace-nowrap duration-300 font-semibold hover:text-secondary transition-colors",
+                isScrolled && isHeroScrolled
                   ? "text-primary-foreground hover:text-secondary"
                   : "text-secondary-foreground hover:text-primary",
               )}
@@ -103,8 +108,8 @@ function Navbar({ isHeroScrolled }: { isHeroScrolled: boolean }) {
             <Button
               asChild
               className={cn(
-                "duration-1000",
-                isScrolled
+                "duration-300",
+                isScrolled && isHeroScrolled
                   ? "bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full shadow-neo-sm border-2 border-foreground/10"
                   : "bg-primary hover:bg-tertiary/90 text-foreground w-full shadow-neo-sm border-2 border-foreground/10",
               )}
@@ -773,7 +778,7 @@ function Pricing() {
  */
 function CTA() {
   return (
-    <section id="leads" className="py-24 bg-accent overflow-hidden relative">
+    <section id="leads" className="py-24 bg-secondary overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -790,7 +795,7 @@ function CTA() {
               Ready to launch your <br />
               <span className="text-primary">credit-building</span> program?
             </h2>
-            <p className="text-xl text-secondary/80 mb-10 leading-relaxed max-w-lg">
+            <p className="text-xl text-secondary-foreground mb-10 leading-relaxed max-w-lg">
               Help your credit union/community bank spin up a credit builder
               program in no time
             </p>
@@ -800,7 +805,7 @@ function CTA() {
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-secondary font-medium text-lg">
+                <div className="text-secondary-foreground font-medium text-lg">
                   Relationship Deepening
                 </div>
               </div>
@@ -808,7 +813,7 @@ function CTA() {
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-secondary font-medium text-lg">
+                <div className="text-secondary-foreground font-medium text-lg">
                   Member Retention
                 </div>
               </div>
@@ -816,7 +821,7 @@ function CTA() {
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-neo-sm border-2 border-white/30">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
-                <div className="text-secondary font-medium text-lg">
+                <div className="text-secondary-foreground font-medium text-lg">
                   Deposit Growth
                 </div>
               </div>
