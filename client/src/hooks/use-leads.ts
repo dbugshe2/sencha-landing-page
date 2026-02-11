@@ -2,6 +2,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, type CreateLeadInput } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
 
+/**
+ * Form hook for creating a new lead.
+ * Handles validation, API request, and toast notifications for success/error states.
+ * @returns A mutation object from tanstack/react-query.
+ */
 export function useCreateLead() {
   const { toast } = useToast();
 
@@ -10,13 +15,13 @@ export function useCreateLead() {
       const validated = api.leads.create.input.parse(data);
       const res = await fetch(api.leads.create.path, {
         method: api.leads.create.method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(validated),
       });
 
       if (!res.ok) {
         const error = await res.json();
-        throw new Error(error.message || 'Failed to submit lead');
+        throw new Error(error.message || "Failed to submit lead");
       }
 
       return api.leads.create.responses[201].parse(await res.json());

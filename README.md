@@ -79,6 +79,31 @@ npm run build
   - Creates a new lead capture entry.
   - **Input:** `{ name: string, email: string, message?: string }`
 
+## ☁️ Deployment (from Replit Export)
+
+This project was originally exported from Replit and requires specific configuration for deployment on Vercel.
+
+### Option 1: Vercel (Recommended)
+
+Vercel is ideal for this Vite + Express setup using **Serverless Functions**.
+
+1. **Build Settings:**
+   - **Framework Preset:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist/public`
+
+2. **Serverless Functions:**
+   - Vercel automatically detects the `server/` directory. However, because this is an Express app, you may need a `vercel.json` to route API requests to your bundled server script or use Vercel's Node.js runtime for the `api` folder.
+   - **Note:** For the current structure, ensure `dist/index.cjs` is accessible or adapt `server/index.ts` to Vercel's function signature if deploying as standalone functions.
+
+3. **Environment Variables:**
+   - `DATABASE_URL`: Your PostgreSQL connection string.
+   - `NODE_ENV`: `production`
+
+### Option 2: Replit
+
+Since it originates from Replit, you can simply import the repository back into a Replit Nix workspace and it will run using the provided `.replit` and `nix` configurations.
+
 ## 🔄 Migration Guide
 
 > [!IMPORTANT]
@@ -102,6 +127,30 @@ npm run build
 - For high-performance data access, integrate **Prisma Accelerate**.
 - Update `DATABASE_URL` to the Accelerate connection string.
 - Use the Accelerate extension in your Prisma client.
+
+## 🔄 Syncing Vercel & Replit
+
+This project uses a GitHub-centric workflow to keep Vercel and Replit in sync.
+
+1. **Develop on Replit/Local:** Make your changes and test them using `npm run dev`.
+2. **Push to GitHub:** Commit and push your changes to your GitHub repository.
+3. **Automatic Vercel Deployment:** Vercel is connected to your GitHub repository and will trigger a new deployment automatically on every push.
+4. **Pulling Changes:** If updates are made via GitHub or other environments, pull them into Replit using the Git UI or `git pull`.
+
+## 🤖 Replit Agent Instructions
+
+When working with this codebase, Replit Agents must adhere to the following architecture:
+
+- **Database & ORM:** The project uses **Drizzle ORM** for all database operations. The underlying storage is **Prisma Postgres** (Vercel Storage).
+- **Schema Management:**
+  - All schema definitions are located in `shared/schema.ts`.
+  - To update the database schema, modify `shared/schema.ts` and run `npm run db:push`.
+- **Environment Variables:**
+  - The `DATABASE_URL` secret must be present in both Replit and Vercel.
+  - Vercel uses this URL to connect to the Prisma Postgres instance during serverless execution.
+- **Vercel Integration:**
+  - The `api/` directory contains the serverless entry point for Vercel.
+  - Ensure any new backend routes added to `server/routes.ts` are compatible with the Express-to-Vercel bridge in `api/index.ts`.
 
 ## 📄 License
 

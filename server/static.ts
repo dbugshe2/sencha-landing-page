@@ -2,6 +2,12 @@ import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
 
+/**
+ * Configures the Express app to serve static files from the build directory.
+ * Falls back to index.html for unknown routes (SPA support).
+ * @param app - The Express application instance.
+ * @throws {Error} If the build directory cannot be found.
+ */
 export function serveStatic(app: Express) {
   const distPath = path.resolve(__dirname, "public");
   if (!fs.existsSync(distPath)) {

@@ -6,6 +6,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 
+/**
+ * Main router component that defines the application's page structure.
+ * Uses `wouter` for lightweight client-side routing.
+ * @returns The router component with defined routes.
+ */
 function Router() {
   return (
     <Switch>
@@ -15,6 +20,11 @@ function Router() {
   );
 }
 
+/**
+ * Root application component that sets up global providers.
+ * Includes QueryClientProvider, TooltipProvider, and global Toaster.
+ * @returns The main application component.
+ */
 function App() {
   return (
     <QueryClientProvider client={queryClient}>

@@ -6,9 +6,12 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem", /* 9px */
-        md: ".375rem", /* 6px */
-        sm: ".1875rem", /* 3px */
+        lg: "0.75rem" /* 12px */,
+        md: "0.5rem" /* 8px */,
+        sm: "0.25rem" /* 4px */,
+        xl: "1rem" /* 16px */,
+        "2xl": "1.25rem" /* 20px */,
+        "3xl": "1.5rem" /* 24px */,
       },
       colors: {
         // Flat / base colors (regular buttons)
@@ -46,6 +49,10 @@ export default {
           foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
           border: "var(--accent-border)",
         },
+        tertiary: {
+          DEFAULT: "hsl(var(--tertiary) / <alpha-value>)",
+          foreground: "hsl(var(--tertiary-foreground) / <alpha-value>)",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
           foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
@@ -73,7 +80,7 @@ export default {
         "sidebar-accent": {
           DEFAULT: "hsl(var(--sidebar-accent) / <alpha-value>)",
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
-          border: "var(--sidebar-accent-border)"
+          border: "var(--sidebar-accent-border)",
         },
         status: {
           online: "rgb(34 197 94)",
@@ -81,6 +88,14 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
+      },
+      boxShadow: {
+        neo: "4px 4px 0px 0px hsl(var(--foreground) / 0.15)",
+        "neo-sm": "2px 2px 0px 0px hsl(var(--foreground) / 0.15)",
+        "neo-lg": "6px 6px 0px 0px hsl(var(--foreground) / 0.15)",
+        "neo-primary": "4px 4px 0px 0px hsl(var(--primary) / 0.6)",
+        "neo-secondary": "4px 4px 0px 0px hsl(var(--secondary) / 0.6)",
+        glass: "0 8px 32px 0 rgba(0, 0, 0, 0.04)",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
