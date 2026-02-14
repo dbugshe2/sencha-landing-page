@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import {
   BentoGridTemplateTwo,
   BentoItem,
-} from "../../../components/ui/bento-grid-template-two";
+} from "@/components/ui/bento-grid-template-two";
 
 /**
  * Rewards section showcasing the benefits and incentives for users using bento grid layout.

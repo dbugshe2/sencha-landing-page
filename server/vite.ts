@@ -28,7 +28,17 @@ export async function setupVite(server: Server, app: Express) {
       ...viteLogger,
       error: (msg, options) => {
         viteLogger.error(msg, options);
-        process.exit(1);
+        // Only terminate the process for truly fatal cases like port conflicts
+        // or critical initialization failures.
+        if (
+          msg.includes("EADDRINUSE") ||
+          msg.includes("failed to load config")
+        ) {
+          process.exit(1);
+        }
+        // Rethrow the error to allow potential upstream handling rather than
+        // killing the whole server process for non-fatal Vite errors.
+        throw new Error(msg);
       },
     },
     server: serverOptions,

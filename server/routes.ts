@@ -20,6 +20,7 @@ export async function registerRoutes(
       const lead = await storage.createLead(input);
       res.status(201).json(lead);
     } catch (err) {
+      console.error("Error creating lead:", err);
       if (err instanceof z.ZodError) {
         res.status(400).json({
           message: err.errors[0].message,
