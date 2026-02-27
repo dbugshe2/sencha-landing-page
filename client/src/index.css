@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Inter:wght@400;500;600&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -164,6 +164,16 @@
     @apply border border-white/40 dark:border-white/10;
     @apply shadow-xl shadow-black/5;
   }
+
+  .glass-card-subtle {
+    @apply bg-white/50 dark:bg-black/30 backdrop-blur-md;
+    @apply border border-white/20 dark:border-white/5;
+  }
+
+  .debug {
+    @apply border-2 border-red-500 border-opacity-100;
+  }
+
 
   /* Neobrutalism */
   .neo-shadow-sm {
