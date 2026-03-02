@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
-import LandingPage from "./pages/NewLandingPage";
+import LandingPage from "./pages/LandingPage";
 
 /**
  * Main router component that defines the application's page structure.

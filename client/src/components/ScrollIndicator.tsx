@@ -1,5 +1,4 @@
-import { motion } from "motion/react";
-import { useScroll } from "motion/react";
+import { motion, useScroll } from "motion/react";
 
 export function ScrollIndicator() {
   const { scrollYProgress } = useScroll();

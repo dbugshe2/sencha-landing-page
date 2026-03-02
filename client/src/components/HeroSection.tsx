@@ -51,7 +51,8 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
         yGap={36}
       />
       <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 md:grid-rows-1 max-h-[80vh]">
-        <div className="bg-secondary flex-1 md:max-h-full h-full neo-card debug  text-white rounded-[32px] p-8 flex flex-col justify-center relative overflow-hidden">
+        {/* left */}
+        <div className="bg-secondary flex-1 md:max-h-full h-full neo-card  text-white rounded-[32px] p-8 flex flex-col justify-center relative overflow-hidden">
           {/* <img src="/svgs/sencha-wave.svg)" alt="" className="absolute" /> */}
           <div className="relative z-20 flex flex-1 flex-col justify-center">
             <motion.div
@@ -106,43 +107,46 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
             className="absolute border-3 h-36 bottom-0 hover:rotate-45 -right-20 z-10"
           />
         </div>
-        <div className="flex flex-col h-[60vh] w-full flex-1">
+        {/* right */}
+        <div className="flex flex-col h-[60vh] w-full flex-1 gap-2">
           <div
             // whileHover={{ y: -5 }}
-            className="flex flex-col flex-1 bg-accent neo-card group rounded-[32px] p-8 w-full relative overflow-hidden"
+            className="flex flex-col flex-1 bg-secondary neo-card group rounded-[32px] p-8 w-full relative overflow-hidden"
           >
-            <h3 className="text-2xl font-semibold mb-2">
+            {/* right-only blur */}
+            <div className="pointer-events-none absolute inset-y-0 top-0 bottom-0 right-0 w-1/3 bg-gradient-to-l from-secondary to-transparent" />
+            <h3 className="text-2xl font-semibold mb-2 text-secondary-foreground z-20">
               Built for community banks and credit unions
             </h3>
-            <p className="text-zinc-500 text-sm max-w-[80%]">
+            <p className="text-secondary-foreground/80 text-sm max-w-[80%] z-20">
               Turn everyday transactions into credit building.
             </p>
             <motion.img
               src={"/svgs/card-stack.svg"}
-              whileHover={{ y: -46 }}
+              whileHover={{ y: -50, scale: 1.1 }}
               style={{
                 y: useTransform(scrollY, [0, 200], [0, -46]),
               }}
-              className="absolute h-[450px] -right-32 -bottom-[200px]"
+              className="absolute h-full -right-8 -bottom-[120px]"
             />
           </div>
           <div className="flex flex-col md:flex-row flex-1 gap-2 z-10">
             {[
               {
                 idx: 1,
-                figure: "1M",
-                label: "clients",
+                figure: "80%",
+                label: "Gen Z Adults",
                 iconSrc: "/svgs/youngins-talkin.svg",
                 badge: "Worldwide",
                 bg: "bg-accent",
               },
               {
                 idx: 2,
-                figure: "45%",
-                label: "less",
+                figure: "676",
+                label: "Average",
                 iconSrc: "/svgs/young-people.svg",
                 badge: "Cheaper",
-                bg: "bg-secondary",
+                bg: "bg-accent",
               },
             ].map((item) => (
               <motion.div
@@ -154,7 +158,11 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
                 )}
               >
                 {/* <AnimatedBadge text={item.badge} /> */}
-                <img src={item.iconSrc} alt="" className={cn("w-28 h-auto")} />
+                <img
+                  src={item.iconSrc}
+                  alt=""
+                  className={cn("w-full shrink-0 max-w-[200px] h-auto")}
+                />
                 <motion.div className="text-4xl font-bold">
                   {item.figure}
                   <span className="text-base font-normal text-zinc-500">
