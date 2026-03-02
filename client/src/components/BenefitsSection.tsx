@@ -6,6 +6,11 @@ import {
   GlobalSearchIcon,
 } from "@hugeicons/core-free-icons";
 
+import { UserRoundPlus, HandCoins, ChartSpline } from "lucide-react";
+
+import FeatureCarousel, { AppFeature } from "./feature-carousel";
+import { cn } from "@/lib/utils";
+
 const FEATURES: AppFeature[] = [
   {
     id: "signup",
@@ -35,11 +40,6 @@ const FEATURES: AppFeature[] = [
       "We automatically report positive payment history to all major credit bureaus each month.",
   },
 ];
-
-import { UserRoundPlus, HandCoins, ChartSpline } from "lucide-react";
-
-import FeatureCarousel, { AppFeature } from "./feature-carousel";
-import { cn } from "@/lib/utils";
 
 export function BenefitsSection() {
   const [step, setStep] = useState(0);
@@ -84,7 +84,7 @@ export function BenefitsSection() {
               A simple 3-step process
             </motion.h3>
             <motion.p className="text-zinc-500 text-sm max-w-[60%]">
-              that helps Gen Z build credit without debt risk.
+              {FEATURES[currentIndex].description}
             </motion.p>
           </div>
           <FeatureCarousel

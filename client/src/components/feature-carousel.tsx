@@ -54,8 +54,8 @@ export default function FeatureCarousel({
 }: Readonly<Props>) {
   const nextStep = useCallback(() => {
     setStep((prev) => prev + 1);
-    onFeatureChange?.((step + 1) % features.length);
-  }, []);
+    onFeatureChange?.((step + 1) % features.length || 0);
+  }, [step, features.length, onFeatureChange]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -126,7 +126,7 @@ export default function FeatureCarousel({
                     className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end pointer-events-none"
                   >
                     <div className="bg-background text-foreground px-4 py-1.5 rounded-full text-sm font-normal uppercase tracking-[0.2em] w-fit shadow-lg border border-border/50">
-                      {index + 1} •
+                      {index + 1}
                     </div>
                     <p className="text-white font-normal text-xl md:text-2xl leading-tight drop-shadow-md tracking-tight">
                       {/* {feature.description} */}
