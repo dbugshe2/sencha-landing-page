@@ -1,21 +1,62 @@
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
-
+import { useRef, useState } from "react";
 import {
-  Plus,
-  BarChart2,
-  Briefcase,
-  UserRoundPlus,
-  HandCoins,
-  ChartSpline,
-} from "lucide-react";
+  Pizza04Icon,
+  CommandFreeIcons,
+  GlobalSearchIcon,
+} from "@hugeicons/core-free-icons";
+
+const FEATURES: AppFeature[] = [
+  {
+    id: "signup",
+    label: "Sign up",
+    icon: Pizza04Icon,
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200",
+    description:
+      "Gen Z users download your app and sign up for the credit-building debit card in minutes.",
+  },
+  {
+    id: "spend",
+    label: "Spend Daily",
+    icon: CommandFreeIcons,
+    image:
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200",
+    description:
+      "Members use their debit card for everyday purchases like coffee, groceries, and subscriptions.",
+  },
+  {
+    id: "build",
+    label: "Build Credit",
+    icon: GlobalSearchIcon,
+    image:
+      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200",
+    description:
+      "We automatically report positive payment history to all major credit bureaus each month.",
+  },
+];
+
+import { UserRoundPlus, HandCoins, ChartSpline } from "lucide-react";
+
+import FeatureCarousel, { AppFeature } from "./feature-carousel";
+import { cn } from "@/lib/utils";
 
 export function BenefitsSection() {
+  const [step, setStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const benefitsRef = useRef(null);
   const benefitsInView = useInView(benefitsRef, {
     once: true,
     margin: "-100px",
   });
+  const currentIndex =
+    ((step % FEATURES.length) + FEATURES.length) % FEATURES.length;
+
+  const handleChipClick = (index: number) => {
+    const diff = (index - currentIndex + FEATURES.length) % FEATURES.length;
+    if (diff > 0) setStep((s) => s + diff);
+  };
+
   return (
     <motion.section
       ref={benefitsRef}
@@ -30,13 +71,13 @@ export function BenefitsSection() {
         </motion.h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1.2fr_1.2fr] container min-h-[60vh] mx-auto gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] container min-h-[60vh] mx-auto gap-5">
         {/* ======================================
               BENEFIT MAIN - Comprehensive app experience
               ====================================== */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="bg-[#F5F5F7] rounded-[32px] p-10 min-h-[400px] relative overflow-hidden flex flex-col justify-between"
+          className="bg-muted rounded-[32px] p-12 min-h-[70vh] relative overflow-hidden flex flex-col justify-between"
         >
           <div>
             <motion.h3 className="text-3xl font-semibold mb-4 max-w-[70%] leading-tight">
@@ -46,29 +87,40 @@ export function BenefitsSection() {
               that helps Gen Z build credit without debt risk.
             </motion.p>
           </div>
+          <FeatureCarousel
+            step={step}
+            currentIndex={currentIndex}
+            setStep={setStep}
+            isPaused={isPaused}
+            setIsPaused={setIsPaused}
+            features={FEATURES}
+          />
           {/* ======================================
                 FLOATING ACTION BUTTONS - Interactive elements
                 ====================================== */}
-          <motion.div className="flex gap-3 mt-8">
+          <motion.div className="flex gap-3 mt-8 z-10">
             {[UserRoundPlus, HandCoins, ChartSpline].map((Icon, index) => (
-              <motion.div
-                key={index}
+              <motion.button
+                key={`${index}-${Icon.name}`}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className={
-                  index === 0
-                    ? "w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center"
-                    : "w-12 h-12 rounded-full bg-white text-secondary shadow-sm flex items-center justify-center"
-                }
+                onClick={() => handleChipClick(index)}
+                // onMouseEnter={() => setIsPaused(true)}
+                // onMouseLeave={() => setIsPaused(false)}
+                className={cn(
+                  "w-16 h-16 neo-card rounded-full bg-accent text-accent-foreground flex items-center justify-center",
+                  currentIndex === index &&
+                    "w-16 h-16 neo-card rounded-full bg-primary text-primary-foreground flex items-center justify-center",
+                )}
               >
                 <Icon size={20} />
-              </motion.div>
+              </motion.button>
             ))}
           </motion.div>
           {/* ======================================
                 BACKGROUND PLACEHOLDER - Image placeholder
                 ====================================== */}
-          <motion.div className="absolute bottom-0 right-0 w-1/2 h-3/4 bg-zinc-200 rounded-tl-[64px]"></motion.div>
+          {/* <motion.div className="absolute bottom-0 right-0 w-1/2 h-3/4 bg-zinc-200 rounded-tl-[64px]"></motion.div> */}
         </motion.div>
 
         {/* ======================================
@@ -76,7 +128,7 @@ export function BenefitsSection() {
               ====================================== */}
         <motion.div
           whileHover={{ y: -10 }}
-          className="bg-[#F5F5F7] rounded-[32px] p-6 flex flex-col"
+          className="bg-muted rounded-[32px] p-6 flex flex-col"
         >
           <motion.div className="w-full flex-1 bg-gradient-to-br from-[#43e97b] to-[#38f9d7] rounded-[20px] mb-6"></motion.div>
           <motion.div
@@ -93,43 +145,6 @@ export function BenefitsSection() {
               20+ colors
             </span>
             <h4 className="text-xl font-semibold">Personalized design</h4>
-          </motion.div>
-        </motion.div>
-
-        {/* ======================================
-              BENEFIT DARK - Easy banking card
-              ====================================== */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="bg-[#272932] text-white rounded-[32px] p-6 flex flex-col justify-between relative overflow-hidden"
-        >
-          <motion.h4 className="text-xl font-semibold text-center mt-2 z-10">
-            Easy Banking
-          </motion.h4>
-
-          {/* ======================================
-                GLASS EFFECT - Decorative background element
-                ====================================== */}
-          <motion.div className="absolute top-16 right-0 left-0 h-32 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-xl"></motion.div>
-
-          <motion.div className="bg-white text-zinc-900 p-5 rounded-[20px] mt-auto z-10 space-y-4">
-            {/* ======================================
-                BANKING FEATURES - Feature list with icons
-                ====================================== */}
-            {[
-              { color: "bg-blue-500", text: "Analysis and statistics" },
-              { color: "bg-blue-400", text: "Transfers" },
-              { color: "bg-blue-300", text: "Investing" },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-3 text-sm font-medium"
-              >
-                <div className={`w-3 h-3 rounded-full ${item.color}`}></div>{" "}
-                {item.text}
-              </motion.div>
-            ))}
           </motion.div>
         </motion.div>
       </div>
