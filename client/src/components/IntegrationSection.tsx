@@ -81,7 +81,7 @@ export function IntegrationsSection({
       <motion.section
         ref={cardsRef}
         // style={{ y: cardsY }}
-        className="relative flex flex-col w-full overflow-hidden py-14"
+        className="relative flex flex-col w-full overflow-hidden py-12"
       >
         <motion.div className="text-center max-w-sm mx-auto lg:max-w-md xl:max-w-lg mb-4">
           <motion.h2 className="text-4xl font-semibold tracking-tight">
@@ -98,12 +98,12 @@ export function IntegrationsSection({
                 <img
                   src={brand.image}
                   alt={brand.name}
-                  className="w-36 h-14 mr-6 lg:mr-20 dark:hidden"
+                  className="w-36 h-20 mr-2 lg:mr-4 dark:hidden"
                 />
                 <img
                   src={brand.lightimg}
                   alt={brand.name}
-                  className="hidden dark:block w-36 h-14 mr-12 lg:mr-20"
+                  className="hidden dark:block w-36 h-20 mr-2 lg:mr-8"
                 />
               </div>
             ))}
