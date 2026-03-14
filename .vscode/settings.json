@@ -1,4 +1,8 @@
 {
   "snyk.advanced.autoSelectOrganization": true,
-  "snyk.advanced.organization": "1418a050-db8d-4fb6-a1c8-2f49f98529f6"
+  "snyk.advanced.organization": "1418a050-db8d-4fb6-a1c8-2f49f98529f6",
+  "sonarlint.connectedMode.project": {
+    "connectionId": "Connecting dcs workers to sonarqube",
+    "projectKey": "dbugshe2_sencha-landing-page"
+  }
 }

@@ -145,7 +145,7 @@ export default function LandingPage() {
         <div className="min-h-screen max-w-vw overflow-hidden font-sans pb-10">
           {/* navbar */}
           <NavBar />
-          <DistortedGlass className="w-full h-20 fixed top-0 left-0 right-0" />
+          <DistortedGlass className="w-full h-14 fixed z-40 top-10 left-0 right-0" />
           {/* hero section */}
           <HeroSection ref={heroRef} heroInView={heroInView} />
 

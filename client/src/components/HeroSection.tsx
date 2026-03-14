@@ -39,7 +39,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
         hoverFillColor="#222" // Dark gray on hover
         className="opacity-25 -z-0"
       />
-      {/* <Waves
+      <Waves
         lineColor="#157e3f"
         // background="radial-gradient(circle, rgba(225,225,225,0.7) 0%, transparent 70%)"
         background="radial-gradient(circle,`${#def8ec}` rgba(225,225,225,0.7) 0%, transparent 70%)"
@@ -53,7 +53,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
         maxCursorMove={120}
         xGap={12}
         yGap={36}
-      /> */}
+      />
       <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 md:grid-rows-1 max-h-[80vh]">
         {/* left */}
         <div className="bg-secondary flex-1 md:max-h-full h-full neo-card  text-white rounded-[32px] p-8 flex flex-col justify-center relative overflow-hidden">
