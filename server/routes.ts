@@ -32,5 +32,33 @@ export async function registerRoutes(
     }
   });
 
+  app.get(api.cardStats.get.path, async (req, res) => {
+    try {
+      const stats = await storage.getCardStats();
+      res.status(200).json(stats);
+    } catch (err) {
+      console.error("Error getting card stats:", err);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  });
+
+  app.post(api.cardStats.update.path, async (req, res) => {
+    try {
+      const input = api.cardStats.update.input.parse(req.body);
+      const stats = await storage.updateCardStats(input);
+      res.status(200).json(stats);
+    } catch (err) {
+      console.error("Error updating card stats:", err);
+      if (err instanceof z.ZodError) {
+        res.status(400).json({
+          message: err.errors[0].message,
+          field: err.errors[0].path.join("."),
+        });
+      } else {
+        res.status(500).json({ message: "Internal Server Error" });
+      }
+    }
+  });
+
   return httpServer;
 }

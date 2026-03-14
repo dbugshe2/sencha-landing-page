@@ -16,8 +16,7 @@ const FEATURES: AppFeature[] = [
     id: "signup",
     label: "Sign up",
     icon: Pizza04Icon,
-    image:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200",
+    image: "/images/how-it-wirks/step-1.png",
     description:
       "Gen Z users download your app and sign up for the credit-building debit card in minutes.",
   },
@@ -25,8 +24,7 @@ const FEATURES: AppFeature[] = [
     id: "spend",
     label: "Spend Daily",
     icon: CommandFreeIcons,
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200",
+    image: "/images/how-it-wirks/step-2.png",
     description:
       "Members use their debit card for everyday purchases like coffee, groceries, and subscriptions.",
   },
@@ -34,14 +32,13 @@ const FEATURES: AppFeature[] = [
     id: "build",
     label: "Build Credit",
     icon: GlobalSearchIcon,
-    image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200",
+    image: "/images/how-it-wirks/step-3.png",
     description:
       "We automatically report positive payment history to all major credit bureaus each month.",
   },
 ];
 
-export function BenefitsSection() {
+export function FeaturesSection() {
   const [step, setStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const benefitsRef = useRef(null);
@@ -59,6 +56,7 @@ export function BenefitsSection() {
 
   return (
     <motion.section
+      id="how-it-works"
       ref={benefitsRef}
       className="mb-16 min-h-screen flex flex-col justify-center"
     >
@@ -71,7 +69,7 @@ export function BenefitsSection() {
         </motion.h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] container min-h-[60vh] mx-auto gap-5">
+      <div className="container flex flex-col min-h-[60vh] mx-auto gap-5">
         {/* ======================================
               BENEFIT MAIN - Comprehensive app experience
               ====================================== */}
@@ -80,10 +78,10 @@ export function BenefitsSection() {
           className="bg-muted rounded-[32px] p-12 min-h-[70vh] relative overflow-hidden flex flex-col justify-between"
         >
           <div>
-            <motion.h3 className="text-3xl font-semibold mb-4 max-w-[70%] leading-tight">
+            <motion.h3 className="text-3xl font-semibold mb-4 leading-tight">
               A simple 3-step process
             </motion.h3>
-            <motion.p className="text-zinc-500 text-sm max-w-[60%]">
+            <motion.p className="text-zinc-500 text-xl max-w-[20%] lg:max-w-[40%]">
               {FEATURES[currentIndex].description}
             </motion.p>
           </div>
@@ -126,7 +124,7 @@ export function BenefitsSection() {
         {/* ======================================
               BENEFIT TALL LIGHT - Personalized design card
               ====================================== */}
-        <motion.div
+        {/* <motion.div
           whileHover={{ y: -10 }}
           className="bg-muted rounded-[32px] p-6 flex flex-col"
         >
@@ -146,7 +144,7 @@ export function BenefitsSection() {
             </span>
             <h4 className="text-xl font-semibold">Personalized design</h4>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.section>
   );

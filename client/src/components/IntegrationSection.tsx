@@ -77,22 +77,25 @@ export function IntegrationsSection({
   const cardsY = useTransform(scrollY, [600, 800], [30, -20]); // Parallax for card issuers section
 
   return (
-    <BackgroundImageTexture variant="inflicted" opacity={0.3}>
+    <BackgroundImageTexture
+      className="bg-white/50"
+      variant="inflicted"
+      opacity={0.2}
+    >
       <motion.section
         ref={cardsRef}
         // style={{ y: cardsY }}
-        className="relative flex flex-col w-full overflow-hidden py-12"
       >
-        <motion.div className="text-center max-w-sm mx-auto lg:max-w-md xl:max-w-lg mb-4">
-          <motion.h2 className="text-4xl font-semibold tracking-tight">
+        <motion.div className="text-center max-w-sm mx-auto lg:max-w-md xl:max-w-lg flex flex-1 flex-col  p-4">
+          <motion.h2 className="text-4xl text-accent-foreground font-semibold tracking-tight">
             {title}
           </motion.h2>
-          <p className="text-lg text-center text-muted-foreground leading-8">
+          <p className="text-lg text-center text-secondary leading-8">
             {description}
           </p>
         </motion.div>
-        <div className="lg:py-16 sm:py-12 py-8">
-          <Marquee pauseOnHover className="[--duration:20s] p-0">
+        <div className="py-8">
+          <Marquee pauseOnHover className="[--duration:20s] p-8">
             {brandList.map((brand, index) => (
               <div key={index}>
                 <img
@@ -115,7 +118,7 @@ export function IntegrationsSection({
           {/* Right blur */}
           <div className="pointer-events-none absolute inset-y-0 top-0 bottom-0 right-0 w-1/4 bg-gradient-to-l from-accent to-transparent" />
         </div>
-        <motion.div className="text-center absolute bottom-10 left-1/2 -translate-x-1/2">
+        <motion.div className="text-center absolute bottom-1 left-1/2 -translate-x-1/2">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="inline-flex items-center gap-2 bg-accent px-2 py-1 rounded-full text-xs font-semibold text-accent-foreground"

@@ -1,8 +1,7 @@
 import { Link } from "wouter";
+import { scrollToTop } from "@/lib/utils";
+import { Button } from "./ui/button";
 const links = [
-  //   { title: "Services", href: "#" },ff
-  //   { title: "Case Studies", href: "#" },
-  //   { title: "Documentation", href: "#" },
   { title: "Privacy Policy", href: "#" },
   { title: "Terms of Service", href: "#" },
   { title: "Security", href: "#" },
@@ -10,18 +9,22 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="py-12 sm:py-20 px-4 sm:px-6">
+    <footer className="py-12 relative sm:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto border-t py-12">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
           {/* Logo and Tagline */}
           <div className="flex items-center gap-1">
-            <Link href="/" className="flex items-center">
+            <Button
+              onClick={scrollToTop}
+              className="flex items-center"
+              variant={"link"}
+            >
               <img
                 src={"/svgs/sencha-logo-black.svg"}
                 className={"shrink-0 transition-all duration-300 w-24 h-10"}
                 alt="Sencha"
               />
-            </Link>
+            </Button>
           </div>
 
           {/* Navigation Links */}

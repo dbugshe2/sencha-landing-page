@@ -1,12 +1,7 @@
-import { cn } from "@/lib/utils";
+import { cn, scrollToTop } from "@/lib/utils";
 import { motion } from "motion/react";
 import { Button } from "./ui/button";
-
-// Smooth scroll to top function
-const scrollToTop = (e: React.MouseEvent) => {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+import { ExpandableScreenTrigger } from "./ui/expandable-screen";
 
 export function NavBar() {
   return (
@@ -29,15 +24,18 @@ export function NavBar() {
           />
         </motion.a>
         <motion.div className="hidden z-50 md:flex items-center gap-8 text-bas lj                                                            font-medium text-zinc-500">
-          {["How it Works", "Rewards"].map((item, index) => (
+          {[
+            { label: "How it Works", href: "#how-it-works" },
+            { label: "Rewards", href: "#rewards" },
+          ].map((item, index) => (
             <motion.a
-              key={item}
-              href="#"
+              key={item.label}
+              href={item.href}
               className={cn(
                 " font-bold transition-colors text-foreground/65 hover:text-foreground",
               )}
             >
-              {item}
+              {item.label}
             </motion.a>
           ))}
         </motion.div>
@@ -46,12 +44,14 @@ export function NavBar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Button
-            variant="default"
-            className="rounded-full px-6 bg-[#1C1D24] text-white hover:bg-zinc-800"
-          >
-            Get Demo
-          </Button>
+          <ExpandableScreenTrigger>
+            <Button
+              variant="default"
+              className="rounded-full px-6 bg-[#1C1D24] text-white hover:bg-zinc-800"
+            >
+              Get Demo
+            </Button>
+          </ExpandableScreenTrigger>
         </motion.div>
       </div>
     </motion.div>

@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import LandingPage from "./pages/LandingPage";
+import { AdBlockPopup } from "@/components/AdBlockPopup";
 
 /**
  * Main router component that defines the application's page structure.
@@ -32,6 +33,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <AdBlockPopup />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

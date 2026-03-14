@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertLeadSchema, leads } from './schema';
+import { insertLeadSchema, leads, cardStats, updateCardStatsSchema } from './schema';
 
 // ============================================
 // SHARED ERROR SCHEMAS
@@ -30,6 +30,26 @@ export const api = {
       },
     },
   },
+  cardStats: {
+    get: {
+      method: 'GET' as const,
+      path: '/api/card-stats',
+      responses: {
+        200: z.custom<typeof cardStats.$inferSelect>(),
+        500: errorSchemas.internal,
+      }
+    },
+    update: {
+      method: 'POST' as const,
+      path: '/api/card-stats/sync',
+      input: updateCardStatsSchema,
+      responses: {
+        200: z.custom<typeof cardStats.$inferSelect>(),
+        400: errorSchemas.validation,
+        500: errorSchemas.internal,
+      }
+    }
+  }
 };
 
 // ============================================

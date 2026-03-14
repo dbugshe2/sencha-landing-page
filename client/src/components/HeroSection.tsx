@@ -22,6 +22,10 @@ interface HeroProps extends HTMLMotionProps<"section"> {
 const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
   const { heroInView } = props;
   const { scrollY } = useScroll();
+
+  // Hero section animations
+  const heroY = useTransform(scrollY, [0, 300], [0, -50]); // Move up as user scrolls down
+  const heroOpacity = useTransform(scrollY, [0, 200], [1, 0]); // Fade out as user scrolls
   return (
     <motion.section
       ref={ref}
@@ -35,7 +39,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
         hoverFillColor="#222" // Dark gray on hover
         className="opacity-25 -z-0"
       />
-      <Waves
+      {/* <Waves
         lineColor="#157e3f"
         // background="radial-gradient(circle, rgba(225,225,225,0.7) 0%, transparent 70%)"
         background="radial-gradient(circle,`${#def8ec}` rgba(225,225,225,0.7) 0%, transparent 70%)"
@@ -49,7 +53,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
         maxCursorMove={120}
         xGap={12}
         yGap={36}
-      />
+      /> */}
       <div className="grid grid-cols-1 grid-rows-2 md:grid-cols-2 gap-4 md:grid-rows-1 max-h-[80vh]">
         {/* left */}
         <div className="bg-secondary flex-1 md:max-h-full h-full neo-card  text-white rounded-[32px] p-8 flex flex-col justify-center relative overflow-hidden">
@@ -108,7 +112,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
           />
         </div>
         {/* right */}
-        <div className="flex flex-col h-[60vh] w-full flex-1 gap-2">
+        <div className="grid grid-cols-1 grid-rows-2 h-[60vh] w-full flex-1 gap-2">
           <div
             // whileHover={{ y: -5 }}
             className="flex flex-col flex-1 bg-secondary neo-card group rounded-[32px] p-8 w-full relative overflow-hidden"
@@ -161,7 +165,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
                 <img
                   src={item.iconSrc}
                   alt=""
-                  className={cn("w-full shrink-0 max-w-[200px] h-auto")}
+                  className={cn("w-full shrink-0 max-w-[150px] h-auto")}
                 />
                 <motion.div className="text-4xl font-bold">
                   {item.figure}
