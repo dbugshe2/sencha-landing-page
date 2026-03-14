@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import LandingPage from "./pages/LandingPage";
+import { AdBlockPopup } from "@/components/AdBlockPopup";
 
 /**
  * Main router component that defines the application's page structure.
@@ -14,7 +16,8 @@ import Home from "@/pages/Home";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={LandingPage} />
+      <Route path="/home" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -30,6 +33,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <AdBlockPopup />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>
