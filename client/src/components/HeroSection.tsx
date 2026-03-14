@@ -31,23 +31,24 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
       ref={ref}
       className="min-h-screen w-full max-w-screen p-4 md:p-8 relative flex justify-center items-center"
     >
-      <Squares
+      {/* <Squares
         speed={0.25}
         squareSize={40}
         direction="diagonal"
-        borderColor="#29ff69" // dark green borders
+        // borderColor="#29ff69" // dark green borders
+        borderColor="#2c2c2c" // dark green borders
         hoverFillColor="#222" // Dark gray on hover
-        className="opacity-25 -z-0"
-      />
+        className="opacity-10 -z-0"
+      /> */}
       <Waves
         lineColor="#157e3f"
         // background="radial-gradient(circle, rgba(225,225,225,0.7) 0%, transparent 70%)"
         background="radial-gradient(circle,`${#def8ec}` rgba(225,225,225,0.7) 0%, transparent 70%)"
-        backgroundColor="transparent"
+        backgroundColor="rgba(225,255,255,0.2)"
         waveSpeedX={0.02}
         waveSpeedY={0.01}
-        waveAmpX={40}
-        waveAmpY={20}
+        waveAmpX={30}
+        waveAmpY={10}
         friction={0.9}
         tension={0.01}
         maxCursorMove={120}
@@ -108,7 +109,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
               scale: useTransform(scrollY, [0, 300], [1, 1.65]),
               rotate: useTransform(scrollY, [0, 300], [0, -25]),
             }}
-            className="absolute border-3 h-36 bottom-0 hover:rotate-45 -right-20 z-10"
+            className="absolute border-3 h-40 bottom-0 hover:rotate-45 -right-20 z-10"
           />
         </div>
         {/* right */}
@@ -131,7 +132,7 @@ const HeroSection = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
               style={{
                 y: useTransform(scrollY, [0, 200], [0, -46]),
               }}
-              className="absolute h-full -right-8 -bottom-[120px]"
+              className="absolute w-full h-full -right-8 -bottom-[100px]"
             />
           </div>
           <div className="flex flex-col md:flex-row flex-1 gap-2 z-10">

@@ -36,6 +36,7 @@ import { NavBar } from "@/components/NavBar";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { ShiftCardDemo } from "@/components/ShiftCard";
 import { StripeBgGuides } from "@/components/vfx/StripeBgGuides";
+import { cn } from "@/lib/utils";
 
 // ============================================================================
 // ANIMATION VARIANTS
@@ -100,6 +101,7 @@ export default function LandingPage() {
   // Section refs for intersection observer (trigger animations when visible)
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, margin: "-100px" }); // Trigger 100px before element enters viewport
+  const heroNotOutOfView = useInView(heroRef, { once: false, margin: "100px" });
 
   const ctaRef = useRef(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
@@ -145,7 +147,12 @@ export default function LandingPage() {
         <div className="min-h-screen max-w-vw overflow-hidden font-sans pb-10">
           {/* navbar */}
           <NavBar />
-          <DistortedGlass className="w-full h-14 fixed z-40 top-10 left-0 right-0" />
+          <DistortedGlass
+            className={cn(
+              heroNotOutOfView ? "opacity-0" : "opacity-100",
+              "w-full h-14 fixed z-40 top-10 left-0 right-0",
+            )}
+          />
           {/* hero section */}
           <HeroSection ref={heroRef} heroInView={heroInView} />
 
